@@ -1687,6 +1687,516 @@ int main() {
   }
 }
 
+/**
+ * Initialize Enhanced Quiz for Chapter 4: Loops
+ */
+function initializeLoopsQuiz() {
+  const quizSection = document.querySelector('#loops-quiz');
+  if (!quizSection) return;
+  
+  const quizQuestions = [
+    {
+      id: 1,
+      question: "What happens first in a for loop?",
+      type: "multiple-choice",
+      topic: "for-loops",
+      options: [
+        "The condition is checked",
+        "The initialization statement runs",
+        "The update statement runs", 
+        "The loop body executes"
+      ],
+      correct: 1,
+      explanation: "In a for loop, the initialization statement runs first, only once at the beginning."
+    },
+    {
+      id: 2, 
+      question: "How many times will this loop run?\n\nfor (int i = 1; i <= 10; i++) {\n    printf(\"%d \", i);\n}",
+      type: "multiple-choice",
+      topic: "for-loops",
+      options: ["9 times", "10 times", "11 times", "Infinite times"],
+      correct: 1,
+      explanation: "The loop runs while i <= 10, starting from i=1, so it runs exactly 10 times (1,2,3,4,5,6,7,8,9,10)."
+    },
+    {
+      id: 3,
+      question: "What's the main difference between while and do-while loops?",
+      type: "multiple-choice", 
+      topic: "while-loops",
+      options: [
+        "while is faster than do-while",
+        "do-while executes at least once, while may not execute at all",
+        "while can only use integer conditions",
+        "There is no difference"
+      ],
+      correct: 1,
+      explanation: "do-while executes the body first, then checks the condition, so it always runs at least once."
+    },
+    {
+      id: 4,
+      question: "What will this code output?\n\nint i = 5;\nwhile (i > 0) {\n    printf(\"%d \", i);\n    i--;\n}",
+      type: "multiple-choice",
+      topic: "while-loops", 
+      options: [
+        "5 4 3 2 1",
+        "5 4 3 2 1 0", 
+        "1 2 3 4 5",
+        "Infinite loop"
+      ],
+      correct: 0,
+      explanation: "The loop starts with i=5 and decrements until i=0, printing 5 4 3 2 1."
+    },
+    {
+      id: 5,
+      question: "What does the 'break' statement do in a loop?", 
+      type: "multiple-choice",
+      topic: "break-continue",
+      options: [
+        "Skips the current iteration and continues with the next",
+        "Pauses the loop for a specified time",
+        "Immediately exits the loop entirely", 
+        "Restarts the loop from the beginning"
+      ],
+      correct: 2,
+      explanation: "The 'break' statement immediately terminates the loop and continues execution after the loop."
+    },
+    {
+      id: 6,
+      question: "What does the 'continue' statement do in a loop?",
+      type: "multiple-choice",
+      topic: "break-continue", 
+      options: [
+        "Exits the loop immediately",
+        "Skips the rest of the current iteration and moves to the next iteration",
+        "Repeats the current iteration",
+        "Pauses the loop execution"
+      ],
+      correct: 1,
+      explanation: "The 'continue' statement skips the remaining code in the current iteration and jumps to the next iteration."
+    },
+    {
+      id: 7,
+      question: "In nested loops, how many total iterations occur?\n\nfor (int i = 1; i <= 3; i++) {\n    for (int j = 1; j <= 4; j++) {\n        printf(\"*\");\n    }\n}",
+      type: "multiple-choice",
+      topic: "nested-loops",
+      options: ["7 iterations", "12 iterations", "3 iterations", "4 iterations"],
+      correct: 1, 
+      explanation: "Outer loop runs 3 times, inner loop runs 4 times for each outer iteration: 3 × 4 = 12 total iterations."
+    },
+    {
+      id: 8,
+      question: "Which loop type is best for input validation?",
+      type: "multiple-choice",
+      topic: "while-loops",
+      options: [
+        "for loop - because it has a built-in counter",
+        "while loop - because you don't know how many attempts are needed", 
+        "do-while loop - because it always validates at least once",
+        "All loops are equally good for validation"
+      ],
+      correct: 1,
+      explanation: "while loops are ideal for input validation because you repeat until valid input is received, and you don't know how many attempts that will take."
+    },
+    {
+      id: 9,
+      question: "What will happen with this code?\n\nfor (int i = 0; i < 5; i++)\n    printf(\"%d \", i);\n    printf(\"Done\");",
+      type: "multiple-choice",
+      topic: "for-loops",
+      options: [
+        "Prints: 0 1 2 3 4 Done",
+        "Prints: 0 1 2 3 4 Done Done Done Done Done",
+        "Syntax error",
+        "Infinite loop"
+      ],
+      correct: 0,
+      explanation: "Without braces, only the first printf is in the loop body. The second printf executes once after the loop completes."
+    },
+    {
+      id: 10,
+      question: "How do you create an infinite loop in C?",
+      type: "multiple-choice", 
+      topic: "while-loops",
+      options: [
+        "for (;;) or while(1)",
+        "while(0)",
+        "for(int i=0; i<10; i--)",
+        "You cannot create infinite loops in C"
+      ],
+      correct: 0,
+      explanation: "for(;;) or while(1) creates infinite loops. while(1) uses a condition that's always true, and for(;;) has empty initialization, condition, and update."
+    }
+  ];
+  
+  // Set up enhanced quiz functionality
+  const startBtn = quizSection.querySelector('#start-quiz');
+  const nextBtn = quizSection.querySelector('#next-question');
+  const submitBtn = quizSection.querySelector('#submit-quiz');
+  const restartBtn = quizSection.querySelector('#restart-quiz');
+  const questionsContainer = quizSection.querySelector('#quiz-questions');
+  const resultsContainer = quizSection.querySelector('#quiz-results');
+  
+  let currentQuestion = 0;
+  let userAnswers = {};
+  let quizStarted = false;
+  
+  function startQuiz() {
+    quizStarted = true;
+    currentQuestion = 0;
+    userAnswers = {};
+    
+    startBtn.style.display = 'none';
+    nextBtn.style.display = 'inline-block';
+    resultsContainer.style.display = 'none';
+    restartBtn.style.display = 'none';
+    
+    showQuestion(currentQuestion);
+  }
+  
+  function showQuestion(index) {
+    if (index >= quizQuestions.length) {
+      showSubmitButton();
+      return;
+    }
+    
+    const question = quizQuestions[index];
+    questionsContainer.innerHTML = `
+      <div class="question-container">
+        <div class="question-header">
+          <span class="question-number">Question ${index + 1} of ${quizQuestions.length}</span>
+          <span class="question-topic">${question.topic.replace('-', ' ').toUpperCase()}</span>
+        </div>
+        <h3 class="question-text">${question.question.replace(/\n/g, '<br>')}</h3>
+        <div class="options-container">
+          ${question.options.map((option, i) => `
+            <label class="option-label">
+              <input type="radio" name="question-${question.id}" value="${i}" class="option-input">
+              <span class="option-text">${option}</span>
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    
+    // Update button states
+    nextBtn.style.display = index < quizQuestions.length - 1 ? 'inline-block' : 'none';
+    submitBtn.style.display = index === quizQuestions.length - 1 ? 'inline-block' : 'none';
+  }
+  
+  function showSubmitButton() {
+    nextBtn.style.display = 'none';
+    submitBtn.style.display = 'inline-block';
+  }
+  
+  function nextQuestion() {
+    // Save current answer
+    const selectedOption = questionsContainer.querySelector('input[type="radio"]:checked');
+    if (selectedOption) {
+      userAnswers[quizQuestions[currentQuestion].id] = parseInt(selectedOption.value);
+    }
+    
+    currentQuestion++;
+    showQuestion(currentQuestion);
+  }
+  
+  function submitQuiz() {
+    // Save final answer
+    const selectedOption = questionsContainer.querySelector('input[type="radio"]:checked');
+    if (selectedOption) {
+      userAnswers[quizQuestions[currentQuestion].id] = parseInt(selectedOption.value);
+    }
+    
+    // Calculate results
+    const results = calculateResults();
+    showResults(results);
+    updateBadges(results);
+  }
+  
+  function calculateResults() {
+    let correct = 0;
+    const topicScores = {};
+    const questionResults = [];
+    
+    quizQuestions.forEach(question => {
+      const userAnswer = userAnswers[question.id];
+      const isCorrect = userAnswer === question.correct;
+      
+      if (isCorrect) correct++;
+      
+      if (!topicScores[question.topic]) {
+        topicScores[question.topic] = { correct: 0, total: 0 };
+      }
+      topicScores[question.topic].total++;
+      if (isCorrect) topicScores[question.topic].correct++;
+      
+      questionResults.push({
+        question: question,
+        userAnswer: userAnswer,
+        isCorrect: isCorrect
+      });
+    });
+    
+    const score = Math.round((correct / quizQuestions.length) * 100);
+    
+    return {
+      score: score,
+      correct: correct,
+      total: quizQuestions.length,
+      topicScores: topicScores,
+      questionResults: questionResults
+    };
+  }
+  
+  function showResults(results) {
+    questionsContainer.style.display = 'none';
+    submitBtn.style.display = 'none';
+    resultsContainer.style.display = 'block';
+    restartBtn.style.display = 'inline-block';
+    
+    // Update score display
+    const scoreElement = resultsContainer.querySelector('#final-score');
+    if (scoreElement) {
+      scoreElement.textContent = results.score;
+      scoreElement.className = `score-number ${results.score >= 80 ? 'excellent' : results.score >= 60 ? 'good' : 'needs-improvement'}`;
+    }
+    
+    // Show performance breakdown
+    const breakdownElement = resultsContainer.querySelector('#performance-breakdown');
+    if (breakdownElement) {
+      let performanceText = '';
+      if (results.score >= 90) performanceText = '🏆 Excellent! Loop mastery achieved!';
+      else if (results.score >= 80) performanceText = '🎯 Great job! Strong loop understanding!';
+      else if (results.score >= 60) performanceText = '📚 Good work! Review the areas below.';
+      else performanceText = '🔄 Keep practicing! Loops take time to master.';
+      
+      breakdownElement.innerHTML = `<p>${performanceText}</p>`;
+    }
+    
+    // Show topic analysis
+    const topicScoresElement = resultsContainer.querySelector('#topic-scores');
+    if (topicScoresElement) {
+      topicScoresElement.innerHTML = '';
+      Object.entries(results.topicScores).forEach(([topic, scores]) => {
+        const percentage = Math.round((scores.correct / scores.total) * 100);
+        const topicDiv = document.createElement('div');
+        topicDiv.className = 'topic-score-item';
+        topicDiv.innerHTML = `
+          <span class="topic-name">${topic.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}:</span>
+          <span class="topic-score ${percentage >= 80 ? 'excellent' : percentage >= 60 ? 'good' : 'needs-work'}">${scores.correct}/${scores.total} (${percentage}%)</span>
+        `;
+        topicScoresElement.appendChild(topicDiv);
+      });
+    }
+    
+    // Show recommendations
+    const recommendationsElement = resultsContainer.querySelector('#recommendation-list');
+    if (recommendationsElement) {
+      const recommendations = generateRecommendations(results);
+      recommendationsElement.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
+    }
+    
+    // Save progress
+    saveQuizProgress('loops', results);
+  }
+  
+  function generateRecommendations(results) {
+    const recommendations = [];
+    
+    Object.entries(results.topicScores).forEach(([topic, scores]) => {
+      const percentage = (scores.correct / scores.total) * 100;
+      
+      if (percentage < 60) {
+        switch (topic) {
+          case 'for-loops':
+            recommendations.push('Review for loop syntax and initialization → condition → update pattern');
+            break;
+          case 'while-loops':
+            recommendations.push('Practice while loop condition checking and preventing infinite loops');
+            break;
+          case 'break-continue':
+            recommendations.push('Study the difference between break (exit loop) and continue (skip iteration)');
+            break;
+          case 'nested-loops':
+            recommendations.push('Work through nested loop examples step by step to understand iteration counts');
+            break;
+        }
+      }
+    });
+    
+    if (results.score >= 90) {
+      recommendations.push('🎉 Excellent work! Try the advanced practice problems to challenge yourself further.');
+    } else if (results.score >= 80) {
+      recommendations.push('Great job! Practice the pattern generation problems to strengthen your nested loop skills.');
+    } else if (results.score >= 60) {
+      recommendations.push('Good foundation! Review the common errors section and practice more loop examples.');
+    } else {
+      recommendations.push('Take time to work through each loop type systematically. Start with simple for loops and build up.');
+    }
+    
+    return recommendations;
+  }
+  
+  function updateBadges(results) {
+    const badges = JSON.parse(localStorage.getItem('czh.badges') || '{}');
+    let newBadges = false;
+    
+    // Loop Beginner Badge
+    if (!badges['loop-beginner']) {
+      badges['loop-beginner'] = {
+        id: 'loop-beginner',
+        name: 'Loop Beginner',
+        description: 'Completed first loop quiz',
+        earnedAt: new Date().toISOString(),
+        chapter: 'loops'
+      };
+      newBadges = true;
+      showBadgeNotification('Loop Beginner', 'Completed first loop quiz');
+    }
+    
+    // For Loop Master Badge
+    const forLoopScore = results.topicScores['for-loops'];
+    if (forLoopScore && (forLoopScore.correct / forLoopScore.total) >= 0.8 && !badges['for-master']) {
+      badges['for-master'] = {
+        id: 'for-master',
+        name: 'For Loop Master',
+        description: 'Scored 80%+ on for loop questions',
+        earnedAt: new Date().toISOString(),
+        chapter: 'loops'
+      };
+      newBadges = true;
+      showBadgeNotification('For Loop Master', 'Scored 80%+ on for loop questions');
+    }
+    
+    // While Loop Wizard Badge
+    const whileLoopScore = results.topicScores['while-loops'];
+    if (whileLoopScore && (whileLoopScore.correct / whileLoopScore.total) >= 0.8 && !badges['while-wizard']) {
+      badges['while-wizard'] = {
+        id: 'while-wizard',
+        name: 'While Loop Wizard',
+        description: 'Scored 80%+ on while loop questions',
+        earnedAt: new Date().toISOString(),
+        chapter: 'loops'
+      };
+      newBadges = true;
+      showBadgeNotification('While Loop Wizard', 'Scored 80%+ on while loop questions');
+    }
+    
+    // Nested Loop Ninja Badge
+    const nestedLoopScore = results.topicScores['nested-loops'];
+    if (nestedLoopScore && (nestedLoopScore.correct / nestedLoopScore.total) >= 0.8 && !badges['nested-ninja']) {
+      badges['nested-ninja'] = {
+        id: 'nested-ninja', 
+        name: 'Nested Loop Ninja',
+        description: 'Scored 80%+ on nested loop questions',
+        earnedAt: new Date().toISOString(),
+        chapter: 'loops'
+      };
+      newBadges = true;
+      showBadgeNotification('Nested Loop Ninja', 'Scored 80%+ on nested loop questions');
+    }
+    
+    // Loop Legend Badge (perfect score)
+    if (results.score === 100 && !badges['loop-legend']) {
+      badges['loop-legend'] = {
+        id: 'loop-legend',
+        name: 'Loop Legend', 
+        description: 'Perfect score on loops quiz',
+        earnedAt: new Date().toISOString(),
+        chapter: 'loops'
+      };
+      newBadges = true;
+      showBadgeNotification('Loop Legend', 'Perfect score on loops quiz');
+    }
+    
+    if (newBadges) {
+      localStorage.setItem('czh.badges', JSON.stringify(badges));
+      updateBadgeDisplay();
+    }
+  }
+  
+  function showBadgeNotification(name, description) {
+    const notification = document.createElement('div');
+    notification.className = 'badge-notification';
+    notification.innerHTML = `
+      <div class="badge-notification-content">
+        <div class="badge-icon">🏆</div>
+        <div>
+          <strong>Badge Earned!</strong><br>
+          <em>${name}</em><br>
+          <small>${description}</small>
+        </div>
+      </div>
+    `;
+    
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--good);
+      color: white;
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--elev);
+      z-index: 10000;
+      animation: slideInRight 0.5s ease-out;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 5000);
+  }
+  
+  function updateBadgeDisplay() {
+    const badges = JSON.parse(localStorage.getItem('czh.badges') || '{}');
+    
+    // Update badge items on page
+    Object.keys(badges).forEach(badgeId => {
+      const badgeItem = document.querySelector(`[data-badge="${badgeId}"]`);
+      if (badgeItem) {
+        badgeItem.classList.add('earned');
+        const progressText = badgeItem.querySelector('.progress-text');
+        if (progressText) {
+          progressText.textContent = 'Earned!';
+        }
+      }
+    });
+  }
+  
+  function saveQuizProgress(chapter, results) {
+    const progress = JSON.parse(localStorage.getItem('czh.progress') || '{}');
+    if (!progress.quizzes) progress.quizzes = {};
+    
+    progress.quizzes[chapter] = {
+      score: results.score,
+      completedAt: new Date().toISOString(),
+      topicScores: results.topicScores
+    };
+    
+    localStorage.setItem('czh.progress', JSON.stringify(progress));
+  }
+  
+  function restartQuiz() {
+    questionsContainer.style.display = 'block';
+    resultsContainer.style.display = 'none';
+    restartBtn.style.display = 'none';
+    startBtn.style.display = 'inline-block';
+    
+    currentQuestion = 0;
+    userAnswers = {};
+    quizStarted = false;
+  }
+  
+  // Event listeners
+  if (startBtn) startBtn.addEventListener('click', startQuiz);
+  if (nextBtn) nextBtn.addEventListener('click', nextQuestion);
+  if (submitBtn) submitBtn.addEventListener('click', submitQuiz);
+  if (restartBtn) restartBtn.addEventListener('click', restartQuiz);
+  
+  // Load existing badge states
+  updateBadgeDisplay();
+}
+
 // Initialize quizzes when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize quiz widgets

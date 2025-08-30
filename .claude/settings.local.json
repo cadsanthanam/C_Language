@@ -6,7 +6,9 @@
       "Bash(python3:*)",
       "Read(/mnt/e/**)",
       "Read(/mnt/e/**)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Read(/mnt/e/**)",
+      "Read(/mnt/e/**)"
     ],
     "deny": [],
     "ask": []
