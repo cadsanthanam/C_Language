@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="C Programming Practice Problems - Variables, Data Types, and Basic I/O">
+    <title>Basic Practice Problems | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Practice: Basics</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="../index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="../index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/01-introduction.html" class="nav-link">Introduction to C</a>
+                        <a href="../chapters/02-basics.html" class="nav-link">Basics & Variables</a>
+                        <a href="../chapters/03-control-flow.html" class="nav-link">Control Flow</a>
+                        <a href="../chapters/04-loops.html" class="nav-link">Loops</a>
+                        <a href="../chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="../chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="../chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="../chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="../chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../practice/basics.html" class="nav-link active" aria-current="page" class="nav-link">Basic Practice</a>
+                        <a href="../practice/control-loops.html" class="nav-link">Control & Loops</a>
+                        <a href="../practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="../practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="../practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="../practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="../practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="../reference/exam-guide.html" class="nav-link">Exam Guide</a>
+                        <a href="../reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <h1>Basic Practice Problems</h1>
+                    <p>Practice problems for variables, data types, input/output, and basic calculations.</p>
+                    
+                    <section id="easy-problems">
+                        <h2>Easy Level Problems</h2>
+                        
+                        <h3>Problem 1: Personal Information</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Write a program that asks for and displays the following information:</p>
+                            <ul>
+                                <li>Name (string)</li>
+                                <li>Age (integer)</li>
+                                <li>Height in meters (float)</li>
+                                <li>Grade (character)</li>
+                            </ul>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    char name[50];
+    int age;
+    float height;
+    char grade;
+    
+    printf("Enter your name: ");
+    scanf("%s", name);
+    
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    printf("Enter your height (meters): ");
+    scanf("%f", &height);
+    
+    printf("Enter your grade: ");
+    scanf(" %c", &grade);
+    
+    printf("\n--- Your Information ---\n");
+    printf("Name: %s\n", name);
+    printf("Age: %d years\n", age);
+    printf("Height: %.2f meters\n", height);
+    printf("Grade: %c\n", grade);
+    
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 2: Simple Calculator</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Create a program that takes two numbers and performs basic arithmetic operations.</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float num1, num2;
+    
+    printf("Enter first number: ");
+    scanf("%f", &num1);
+    
+    printf("Enter second number: ");
+    scanf("%f", &num2);
+    
+    printf("\n--- Results ---\n");
+    printf("%.2f + %.2f = %.2f\n", num1, num2, num1 + num2);
+    printf("%.2f - %.2f = %.2f\n", num1, num2, num1 - num2);
+    printf("%.2f * %.2f = %.2f\n", num1, num2, num1 * num2);
+    
+    if (num2 != 0) {
+        printf("%.2f / %.2f = %.2f\n", num1, num2, num1 / num2);
+    } else {
+        printf("Cannot divide by zero!\n");
+    }
+    
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 3: Area and Perimeter</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Calculate the area and perimeter of a rectangle given length and width.</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float length, width, area, perimeter;
+    
+    printf("Enter length of rectangle: ");
+    scanf("%f", &length);
+    
+    printf("Enter width of rectangle: ");
+    scanf("%f", &width);
+    
+    area = length * width;
+    perimeter = 2 * (length + width);
+    
+    printf("\n--- Rectangle Properties ---\n");
+    printf("Length: %.2f\n", length);
+    printf("Width: %.2f\n", width);
+    printf("Area: %.2f square units\n", area);
+    printf("Perimeter: %.2f units\n", perimeter);
+    
+    return 0;
+}</code></pre>
+                        </details>
+                    </section>
+
+                    <section id="medium-problems">
+                        <h2>Medium Level Problems</h2>
+                        
+                        <h3>Problem 4: Temperature Converter</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Create a program that converts temperature between Celsius and Fahrenheit.</p>
+                            <p><strong>Formulas:</strong></p>
+                            <ul>
+                                <li>F = (C × 9/5) + 32</li>
+                                <li>C = (F - 32) × 5/9</li>
+                            </ul>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float celsius, fahrenheit;
+    
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &celsius);
+    
+    fahrenheit = (celsius * 9.0/5.0) + 32;
+    
+    printf("%.2f°C = %.2f°F\n", celsius, fahrenheit);
+    
+    printf("\nEnter temperature in Fahrenheit: ");
+    scanf("%f", &fahrenheit);
+    
+    celsius = (fahrenheit - 32) * 5.0/9.0;
+    
+    printf("%.2f°F = %.2f°C\n", fahrenheit, celsius);
+    
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 5: Simple Interest Calculator</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Calculate simple interest and final amount.</p>
+                            <p><strong>Formula:</strong> SI = (P × R × T) / 100</p>
+                            <p>Where P = Principal, R = Rate, T = Time</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float principal, rate, time, interest, amount;
+    
+    printf("Enter principal amount: $");
+    scanf("%f", &principal);
+    
+    printf("Enter rate of interest (%%): ");
+    scanf("%f", &rate);
+    
+    printf("Enter time period (years): ");
+    scanf("%f", &time);
+    
+    interest = (principal * rate * time) / 100;
+    amount = principal + interest;
+    
+    printf("\n--- Loan Details ---\n");
+    printf("Principal Amount: $%.2f\n", principal);
+    printf("Rate of Interest: %.2f%%\n", rate);
+    printf("Time Period: %.1f years\n", time);
+    printf("Simple Interest: $%.2f\n", interest);
+    printf("Total Amount: $%.2f\n", amount);
+    
+    return 0;
+}</code></pre>
+                        </details>
+                    </section>
+
+                    <section id="challenging-problems">
+                        <h2>Challenging Problems</h2>
+                        
+                        <h3>Problem 6: Swap Without Third Variable</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Write a program to swap two numbers without using a third variable. Show both arithmetic and XOR methods.</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int a, b;
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    
+    printf("Before swapping: a = %d, b = %d\n", a, b);
+    
+    // Method 1: Arithmetic approach
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    
+    printf("After swapping: a = %d, b = %d\n", a, b);
+    
+    // Method 2: XOR approach (reset first)
+    a = a + b;
+    b = a - b;
+    a = a - b;  // Back to original
+    
+    printf("Original again: a = %d, b = %d\n", a, b);
+    
+    // XOR method
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    
+    printf("After XOR swap: a = %d, b = %d\n", a, b);
+    
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 7: Character Analysis</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Input a character and display its ASCII value and category (digit, uppercase, lowercase, special).</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    char ch;
+    
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+    
+    printf("Character: %c\n", ch);
+    printf("ASCII Value: %d\n", ch);
+    
+    // Determine category
+    if (ch >= '0' && ch <= '9') {
+        printf("Category: Digit\n");
+    } else if (ch >= 'A' && ch <= 'Z') {
+        printf("Category: Uppercase Letter\n");
+    } else if (ch >= 'a' && ch <= 'z') {
+        printf("Category: Lowercase Letter\n");
+    } else if (ch == ' ') {
+        printf("Category: Space\n");
+    } else {
+        printf("Category: Special Character\n");
+    }
+    
+    return 0;
+}</code></pre>
+                        </details>
+                    </section>
+
+                    <section id="debugging-practice">
+                        <h2>Debugging Practice</h2>
+                        
+                        <p>Find and fix the errors in these code snippets:</p>
+
+                        <h3>Debug 1: Format Specifier Error</h3>
+                        <pre><code class="language-c">// What's wrong with this code?
+#include &lt;stdio.h&gt;
+
+int main() {
+    float price = 19.99;
+    printf("Price: %d dollars\n", price);
+    return 0;
+}</code></pre>
+
+                        <details>
+                            <summary>💡 Answer</summary>
+                            <p><strong>Error:</strong> Using %d for a float variable.<br>
+                            <strong>Fix:</strong> Use %f instead of %d<br>
+                            <code>printf("Price: %.2f dollars\n", price);</code></p>
+                        </details>
+
+                        <h3>Debug 2: Missing Address Operator</h3>
+                        <pre><code class="language-c">// What's wrong with this code?
+#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", age);
+    printf("You are %d years old\n", age);
+    return 0;
+}</code></pre>
+
+                        <details>
+                            <summary>💡 Answer</summary>
+                            <p><strong>Error:</strong> Missing & operator in scanf.<br>
+                            <strong>Fix:</strong> <code>scanf("%d", &age);</code><br>
+                            scanf needs the address of the variable to store input.</p>
+                        </details>
+                    </section>
+
+                    <section id="practice-checklist">
+                        <h2>Practice Checklist</h2>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">✅ Have you mastered:</div>
+                            <ul>
+                                <li>Declaring variables of different data types</li>
+                                <li>Using scanf() correctly with & operator</li>
+                                <li>Using appropriate format specifiers</li>
+                                <li>Performing basic arithmetic operations</li>
+                                <li>Formatting output with printf()</li>
+                                <li>Working with constants</li>
+                                <li>Debugging common input/output errors</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Next Practice Set:</strong> Ready for more challenges? Try <a href="control-loops.html">Control & Loops Practice</a>.</p>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for engineering students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>

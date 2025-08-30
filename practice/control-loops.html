@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Control Flow and Loops Practice Problems - if/else, switch, for, while loops">
+    <title>Control Flow & Loops Practice | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Practice: Control & Loops</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="../index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="../index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/01-introduction.html" class="nav-link">Introduction to C</a>
+                        <a href="../chapters/02-basics.html" class="nav-link">Basics & Variables</a>
+                        <a href="../chapters/03-control-flow.html" class="nav-link">Control Flow</a>
+                        <a href="../chapters/04-loops.html" class="nav-link">Loops</a>
+                        <a href="../chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="../chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="../chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="../chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="../chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../practice/basics.html" class="nav-link">Basic Practice</a>
+                        <a href="../practice/control-loops.html" class="nav-link active" aria-current="page" class="nav-link">Control & Loops</a>
+                        <a href="../practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="../practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="../practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="../practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="../practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="../reference/exam-guide.html" class="nav-link">Exam Guide</a>
+                        <a href="../reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <h1>Control Flow & Loops Practice</h1>
+                    <p>Master decision-making and repetition with these hands-on exercises.</p>
+                    
+                    <section id="decision-making">
+                        <h2>Decision Making Practice</h2>
+                        
+                        <h3>Problem 1: Grade Calculator</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Write a program that takes student marks (0-100) and assigns letter grades:</p>
+                            <ul>
+                                <li>A: 90-100</li>
+                                <li>B: 80-89</li>
+                                <li>C: 70-79</li>
+                                <li>D: 60-69</li>
+                                <li>F: Below 60</li>
+                            </ul>
+                            <p>Include input validation for marks range.</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int marks;
+    
+    printf("Enter marks (0-100): ");
+    scanf("%d", &marks);
+    
+    // Input validation
+    if (marks < 0 || marks > 100) {
+        printf("Invalid marks! Enter between 0-100.\n");
+        return 1;
+    }
+    
+    // Grade assignment
+    if (marks >= 90) {
+        printf("Grade: A\n");
+    } else if (marks >= 80) {
+        printf("Grade: B\n");
+    } else if (marks >= 70) {
+        printf("Grade: C\n");
+    } else if (marks >= 60) {
+        printf("Grade: D\n");
+    } else {
+        printf("Grade: F\n");
+    }
+    
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 2: Calculator with Switch</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Create a menu-driven calculator using switch statement for basic operations (+, -, *, /). Handle division by zero error.</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    char operator;
+    float num1, num2, result;
+    
+    printf("Enter operator (+, -, *, /): ");
+    scanf("%c", &operator);
+    
+    printf("Enter two numbers: ");
+    scanf("%f %f", &num1, &num2);
+    
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            printf("%.2f + %.2f = %.2f\n", num1, num2, result);
+            break;
+            
+        case '-':
+            result = num1 - num2;
+            printf("%.2f - %.2f = %.2f\n", num1, num2, result);
+            break;
+            
+        case '*':
+            result = num1 * num2;
+            printf("%.2f * %.2f = %.2f\n", num1, num2, result);
+            break;
+            
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+                printf("%.2f / %.2f = %.2f\n", num1, num2, result);
+            } else {
+                printf("Error: Division by zero!\n");
+            }
+            break;
+            
+        default:
+            printf("Invalid operator!\n");
+    }
+    
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 3: Triangle Type Classifier</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Input three sides of a triangle and determine:</p>
+                            <ol>
+                                <li>If it's a valid triangle</li>
+                                <li>Type: Equilateral, Isosceles, or Scalene</li>
+                            </ol>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float a, b, c;
+    
+    printf("Enter three sides: ");
+    scanf("%f %f %f", &a, &b, &c);
+    
+    // Check if triangle is valid
+    if (a + b > c && a + c > b && b + c > a) {
+        printf("Valid triangle\n");
+        
+        // Classify triangle type
+        if (a == b && b == c) {
+            printf("Type: Equilateral\n");
+        } else if (a == b || b == c || a == c) {
+            printf("Type: Isosceles\n");
+        } else {
+            printf("Type: Scalene\n");
+        }
+    } else {
+        printf("Invalid triangle\n");
+    }
+    
+    return 0;
+}</code></pre>
+                        </details>
+                    </section>
+
+                    <section id="loops-practice">
+                        <h2>Loops Practice</h2>
+                        
+                        <h3>Problem 4: Prime Number Checker</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Write a program to check if a given number is prime. A prime number has no divisors other than 1 and itself.</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int n, isPrime = 1;
+    
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    
+    if (n <= 1) {
+        isPrime = 0;
+    } else {
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+    }
+    
+    if (isPrime) {
+        printf("%d is prime\n", n);
+    } else {
+        printf("%d is not prime\n", n);
+    }
+    
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 5: Fibonacci Series</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Generate and print the first n terms of the Fibonacci series (0, 1, 1, 2, 3, 5, 8, ...).</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int n, first = 0, second = 1, next;
+    
+    printf("Enter number of terms: ");
+    scanf("%d", &n);
+    
+    if (n >= 1) {
+        printf("Fibonacci series: %d", first);
+    }
+    
+    if (n >= 2) {
+        printf(", %d", second);
+    }
+    
+    for (int i = 3; i <= n; i++) {
+        next = first + second;
+        printf(", %d", next);
+        first = second;
+        second = next;
+    }
+    
+    printf("\n");
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 6: Number Pattern</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Print the following pattern for n=5:</p>
+                            <pre>1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5</pre>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+    
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+    
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}</code></pre>
+                        </details>
+                    </section>
+
+                    <section id="challenging-problems">
+                        <h2>Challenging Problems</h2>
+                        
+                        <h3>Problem 7: Number Guessing Game</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Create a number guessing game where:</p>
+                            <ul>
+                                <li>Computer generates random number 1-100</li>
+                                <li>User has maximum 7 attempts</li>
+                                <li>Provide "higher" or "lower" hints</li>
+                                <li>Keep score of attempts</li>
+                            </ul>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+int main() {
+    int target, guess, attempts = 0;
+    const int MAX_ATTEMPTS = 7;
+    
+    // Seed random number generator
+    srand(time(NULL));
+    target = rand() % 100 + 1;
+    
+    printf("Guess the number between 1-100!\n");
+    printf("You have %d attempts.\n\n", MAX_ATTEMPTS);
+    
+    while (attempts < MAX_ATTEMPTS) {
+        printf("Attempt %d: Enter your guess: ", attempts + 1);
+        scanf("%d", &guess);
+        attempts++;
+        
+        if (guess == target) {
+            printf("Congratulations! You guessed it in %d attempts!\n", attempts);
+            return 0;
+        } else if (guess < target) {
+            printf("Higher!\n");
+        } else {
+            printf("Lower!\n");
+        }
+        
+        printf("Attempts remaining: %d\n\n", MAX_ATTEMPTS - attempts);
+    }
+    
+    printf("Game over! The number was %d.\n", target);
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Problem 8: Digital Root Calculator</h3>
+                        <div class="callout callout-info">
+                            <div class="callout-title">📝 Task</div>
+                            <p>Calculate the digital root of a number by repeatedly summing digits until a single digit remains. Example: 456 → 4+5+6=15 → 1+5=6</p>
+                        </div>
+
+                        <details>
+                            <summary>💡 Solution</summary>
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num, sum;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Process: %d", num);
+    
+    while (num >= 10) {
+        sum = 0;
+        
+        // Sum all digits
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        
+        num = sum;
+        printf(" → %d", num);
+    }
+    
+    printf("\nDigital root: %d\n", num);
+    return 0;
+}</code></pre>
+                        </details>
+                    </section>
+
+                    <section id="debugging-exercises">
+                        <h2>Debugging Practice</h2>
+                        
+                        <h3>Debug Exercise 1</h3>
+                        <p>Find and fix errors in this code meant to print even numbers 1-10:</p>
+                        <pre><code class="language-c">// Buggy code
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 1; i <= 10; i++);
+        if (i % 2 = 0) {
+            printf("%d ", i);
+        }
+    return 0;
+}</code></pre>
+
+                        <details>
+                            <summary>💡 Fixes</summary>
+                            <ul>
+                                <li><strong>Error 1:</strong> Semicolon after for loop</li>
+                                <li><strong>Error 2:</strong> Assignment (=) instead of comparison (==)</li>
+                                <li><strong>Error 3:</strong> Variable i not in scope</li>
+                            </ul>
+                            <pre><code class="language-c">// Fixed code
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        if (i % 2 == 0) {
+            printf("%d ", i);
+        }
+    }
+    return 0;
+}</code></pre>
+                        </details>
+
+                        <h3>Debug Exercise 2</h3>
+                        <p>Fix this infinite loop meant to print 1-5:</p>
+                        <pre><code class="language-c">// Buggy code
+int i = 1;
+while (i <= 5) {
+    printf("%d ", i);
+}</code></pre>
+
+                        <details>
+                            <summary>💡 Fix</summary>
+                            <p><strong>Missing increment:</strong> Add <code>i++;</code> inside loop</p>
+                            <pre><code class="language-c">// Fixed code
+int i = 1;
+while (i <= 5) {
+    printf("%d ", i);
+    i++; // Don't forget to increment!
+}</code></pre>
+                        </details>
+                    </section>
+
+                    <section id="practice-checklist-control">
+                        <h2>Practice Checklist</h2>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">✅ Have you mastered:</div>
+                            <ul>
+                                <li>Using if-else for complex decision making</li>
+                                <li>Implementing switch statements for menu systems</li>
+                                <li>Writing different types of loops (for, while, do-while)</li>
+                                <li>Using break and continue effectively</li>
+                                <li>Creating nested loops for patterns</li>
+                                <li>Handling input validation</li>
+                                <li>Debugging loop-related errors</li>
+                                <li>Avoiding infinite loops</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Next Challenge:</strong> Ready for more complex data handling? Try <a href="arrays.html">Arrays Practice</a>.</p>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for engineering students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page Not Found - C Programming: Zero to Hero">
+    <title>404 - Page Not Found | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">C Programming: Zero to Hero</div>
+            <div class="search-container">
+                <input type="search" class="search-input" placeholder="Search topics..." aria-label="Search">
+            </div>
+            <div class="shortcuts-hint">Press / to search, t to toggle nav</div>
+        </header>
+
+        <main class="main" style="margin-left: 0; display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 80px);">
+            <div class="content text-center">
+                <h1 style="font-size: 6rem; color: var(--accent); margin-bottom: 1rem;">404</h1>
+                <h2 style="margin-bottom: 1rem;">Page Not Found</h2>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                    Oops! The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+                </p>
+                
+                <div style="margin-bottom: 2rem;">
+                    <pre style="display: inline-block; background: var(--tertiary-bg); padding: 1rem; border-radius: var(--border-radius);">
+<code class="language-c">if (page == NULL) {
+    printf("404: Page not found\\n");
+    return home();
+}</code>
+                    </pre>
+                </div>
+                
+                <div>
+                    <a href="index.html" class="btn" style="margin-right: 1rem;">🏠 Back to Home</a>
+                    <a href="chapters/01-introduction.html" class="btn btn-secondary">📚 Start Learning</a>
+                </div>
+                
+                <div style="margin-top: 3rem;">
+                    <h3>Popular Pages:</h3>
+                    <ul style="list-style: none; margin: 1rem 0; padding: 0;">
+                        <li style="margin: 0.5rem 0;"><a href="chapters/02-basics.html">Basics & Variables</a></li>
+                        <li style="margin: 0.5rem 0;"><a href="chapters/07-pointers.html">Pointers</a></li>
+                        <li style="margin: 0.5rem 0;"><a href="practice/basics.html">Practice Problems</a></li>
+                        <li style="margin: 0.5rem 0;"><a href="reference/common-errors.html">Common Errors</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>

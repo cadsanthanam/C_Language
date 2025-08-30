@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loops in C Programming - for, while, do-while loops, break and continue">
+    <title>Chapter 4: Loops | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/quiz.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Loops</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 55%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="../index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="../index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/01-introduction.html" class="nav-link">Introduction to C</a>
+                        <a href="../chapters/02-basics.html" class="nav-link">Basics & Variables</a>
+                        <a href="../chapters/03-control-flow.html" class="nav-link">Control Flow</a>
+                        <a href="../chapters/04-loops.html" class="nav-link active" aria-current="page" class="nav-link">Loops</a>
+                        <a href="../chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="../chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="../chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="../chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="../chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../practice/basics.html" class="nav-link">Basic Practice</a>
+                        <a href="../practice/control-loops.html" class="nav-link">Control & Loops</a>
+                        <a href="../practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="../practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="../practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="../practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="../practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="../reference/exam-guide.html" class="nav-link">Exam Guide</a>
+                        <a href="../reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <h1>Chapter 4: Loops</h1>
+                    
+                    <section id="why-loops">
+                        <h2>Why Do We Need Loops?</h2>
+                        <p>Imagine you want to print "Hello" 100 times. Without loops, you'd need to write 100 printf statements! Loops let you repeat code efficiently.</p>
+
+                        <div class="callout callout-info">
+                            <div class="callout-title">🎯 What Loops Do</div>
+                            <ul>
+                                <li><strong>Repeat code</strong> multiple times</li>
+                                <li><strong>Process data</strong> in collections (like arrays)</li>
+                                <li><strong>Keep programs running</strong> until a condition is met</li>
+                                <li><strong>Reduce code repetition</strong> (DRY - Don't Repeat Yourself)</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="for-loop">
+                        <h2>for Loop</h2>
+                        <p>The <code>for</code> loop is best when you know exactly how many times you want to repeat something.</p>
+
+                        <h3>Basic Syntax</h3>
+                        <pre><code class="language-c">for (initialization; condition; update) {
+    // Code to repeat
+}</code></pre>
+
+                        <h3>Simple Example</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // Print numbers 1 to 5
+    for (int i = 1; i <= 5; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");  // Output: 1 2 3 4 5
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">🔍 How it Works</div>
+                            <ol>
+                                <li><strong>Initialization:</strong> <code>int i = 1</code> - Run once at start</li>
+                                <li><strong>Condition:</strong> <code>i <= 5</code> - Check before each iteration</li>
+                                <li><strong>Body:</strong> Execute the code inside {}</li>
+                                <li><strong>Update:</strong> <code>i++</code> - Run after each iteration</li>
+                                <li><strong>Repeat:</strong> Go back to step 2</li>
+                            </ol>
+                        </div>
+
+                        <h3>Practical Examples</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // Sum of first 10 natural numbers
+    int sum = 0;
+    for (int i = 1; i <= 10; i++) {
+        sum += i;  // sum = sum + i
+    }
+    printf("Sum = %d\n", sum);  // Output: Sum = 55
+    
+    // Table of 5
+    printf("Table of 5:\n");
+    for (int i = 1; i <= 10; i++) {
+        printf("5 x %d = %d\n", i, 5 * i);
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <h3>Different for Loop Patterns</h3>
+                        <pre><code class="language-c">// Counting backward
+for (int i = 10; i >= 1; i--) {
+    printf("%d ", i);  // 10 9 8 7 6 5 4 3 2 1
+}
+
+// Skip by 2
+for (int i = 0; i <= 10; i += 2) {
+    printf("%d ", i);  // 0 2 4 6 8 10
+}
+
+// Multiple variables
+for (int i = 1, j = 10; i <= 5; i++, j--) {
+    printf("i=%d, j=%d\n", i, j);
+}</code></pre>
+                    </section>
+
+                    <section id="while-loop">
+                        <h2>while Loop</h2>
+                        <p>The <code>while</code> loop repeats as long as a condition is true. Great when you don't know exactly how many iterations you need.</p>
+
+                        <h3>Basic Syntax</h3>
+                        <pre><code class="language-c">while (condition) {
+    // Code to repeat
+    // Don't forget to update the condition variable!
+}</code></pre>
+
+                        <h3>Input Validation Example</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    
+    printf("Enter your age (1-120): ");
+    scanf("%d", &age);
+    
+    // Keep asking until valid input
+    while (age < 1 || age > 120) {
+        printf("Invalid age! Please enter age between 1-120: ");
+        scanf("%d", &age);
+    }
+    
+    printf("Your age is %d\n", age);
+    return 0;
+}</code></pre>
+
+                        <h3>Menu-driven Program</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int choice;
+    
+    while (1) {  // Infinite loop
+        printf("\n--- Calculator Menu ---\n");
+        printf("1. Add\n2. Subtract\n3. Multiply\n4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+        
+        if (choice == 4) {
+            printf("Goodbye!\n");
+            break;  // Exit the loop
+        }
+        
+        float a, b;
+        printf("Enter two numbers: ");
+        scanf("%f %f", &a, &b);
+        
+        switch (choice) {
+            case 1: printf("Result: %.2f\n", a + b); break;
+            case 2: printf("Result: %.2f\n", a - b); break;
+            case 3: printf("Result: %.2f\n", a * b); break;
+            default: printf("Invalid choice!\n");
+        }
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-title">⚠️ Infinite Loop Danger</div>
+                            <p>Make sure the loop condition eventually becomes false, or your program will run forever!</p>
+                        </div>
+                    </section>
+
+                    <section id="do-while-loop">
+                        <h2>do-while Loop</h2>
+                        <p>The <code>do-while</code> loop executes the code at least once, then checks the condition.</p>
+
+                        <h3>Basic Syntax</h3>
+                        <pre><code class="language-c">do {
+    // Code to repeat (runs at least once)
+} while (condition);</code></pre>
+
+                        <h3>Password Verification Example</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char password[50];
+    const char correct_password[] = "secret123";
+    
+    do {
+        printf("Enter password: ");
+        scanf("%s", password);
+        
+        if (strcmp(password, correct_password) != 0) {
+            printf("Wrong password! Try again.\n");
+        }
+    } while (strcmp(password, correct_password) != 0);
+    
+    printf("Access granted!\n");
+    return 0;
+}</code></pre>
+
+                        <h3>When to Use Each Loop Type</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Loop Type</th>
+                                    <th>Use When</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>for</strong></td>
+                                    <td>Know exact number of iterations</td>
+                                    <td>Print 1 to 100, process array elements</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>while</strong></td>
+                                    <td>Condition-based repetition</td>
+                                    <td>Input validation, file reading</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>do-while</strong></td>
+                                    <td>Must execute at least once</td>
+                                    <td>Menu programs, password prompts</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="break-continue">
+                        <h2>break and continue</h2>
+                        <p>Control the flow within loops using <code>break</code> and <code>continue</code>.</p>
+
+                        <h3>break Statement</h3>
+                        <p>Immediately exits the current loop:</p>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // Find first even number greater than 10
+    for (int i = 11; i <= 20; i++) {
+        if (i % 2 == 0) {
+            printf("First even number: %d\n", i);
+            break;  // Exit the loop
+        }
+    }
+    // Output: First even number: 12
+    
+    return 0;
+}</code></pre>
+
+                        <h3>continue Statement</h3>
+                        <p>Skips the rest of the current iteration and moves to the next:</p>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // Print only odd numbers from 1 to 10
+    for (int i = 1; i <= 10; i++) {
+        if (i % 2 == 0) {
+            continue;  // Skip even numbers
+        }
+        printf("%d ", i);
+    }
+    printf("\n");  // Output: 1 3 5 7 9
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-info">
+                            <div class="callout-title">🎯 Key Differences</div>
+                            <ul>
+                                <li><strong>break:</strong> Exits the entire loop</li>
+                                <li><strong>continue:</strong> Skips to next iteration</li>
+                                <li>Both only affect the innermost loop they're in</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="nested-loops">
+                        <h2>Nested Loops</h2>
+                        <p>A loop inside another loop. The inner loop completes all its iterations for each iteration of the outer loop.</p>
+
+                        <h3>Pattern Printing</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // Print a triangle pattern
+    for (int i = 1; i <= 5; i++) {        // Outer loop: rows
+        for (int j = 1; j <= i; j++) {    // Inner loop: columns
+            printf("* ");
+        }
+        printf("\n");  // New line after each row
+    }
+    
+    /* Output:
+     * 
+     * * 
+     * * * 
+     * * * * 
+     * * * * * 
+     */
+    
+    return 0;
+}</code></pre>
+
+                        <h3>Multiplication Table</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Multiplication Table (1-5):\n\n");
+    
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= 5; j++) {
+            printf("%3d", i * j);  // %3d for alignment
+        }
+        printf("\n");
+    }
+    
+    /* Output:
+      1  2  3  4  5
+      2  4  6  8 10
+      3  6  9 12 15
+      4  8 12 16 20
+      5 10 15 20 25
+     */
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Understanding Nested Loops</div>
+                            <p>If outer loop runs n times and inner loop runs m times, total iterations = n × m</p>
+                        </div>
+                    </section>
+
+                    <section id="common-patterns">
+                        <h2>Common Loop Patterns</h2>
+
+                        <h3>Sum and Average</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int n, sum = 0, num;
+    
+    printf("How many numbers? ");
+    scanf("%d", &n);
+    
+    for (int i = 1; i <= n; i++) {
+        printf("Enter number %d: ", i);
+        scanf("%d", &num);
+        sum += num;
+    }
+    
+    printf("Sum = %d\n", sum);
+    printf("Average = %.2f\n", (float)sum / n);
+    
+    return 0;
+}</code></pre>
+
+                        <h3>Finding Maximum</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int n, num, max;
+    
+    printf("How many numbers? ");
+    scanf("%d", &n);
+    
+    printf("Enter number 1: ");
+    scanf("%d", &max);  // Initialize max with first number
+    
+    for (int i = 2; i <= n; i++) {
+        printf("Enter number %d: ", i);
+        scanf("%d", &num);
+        
+        if (num > max) {
+            max = num;
+        }
+    }
+    
+    printf("Maximum = %d\n", max);
+    return 0;
+}</code></pre>
+
+                        <h3>Prime Number Check</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int num, isPrime = 1;  // Assume prime initially
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    if (num <= 1) {
+        isPrime = 0;  // Not prime
+    } else {
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                isPrime = 0;  // Found a divisor, not prime
+                break;
+            }
+        }
+    }
+    
+    if (isPrime) {
+        printf("%d is prime\n", num);
+    } else {
+        printf("%d is not prime\n", num);
+    }
+    
+    return 0;
+}</code></pre>
+                    </section>
+
+                    <section id="practice-loops">
+                        <h2>Practice Problems</h2>
+
+                        <h3>Basic Problems</h3>
+                        <ol>
+                            <li>Print numbers from 1 to 100 using each type of loop.</li>
+                            <li>Calculate the factorial of a number (5! = 5×4×3×2×1).</li>
+                            <li>Print the Fibonacci series up to n terms.</li>
+                            <li>Count the number of digits in a number.</li>
+                        </ol>
+
+                        <h3>Pattern Problems</h3>
+                        <ol>
+                            <li>Print a right-angled triangle pattern with numbers.</li>
+                            <li>Print an inverted triangle pattern.</li>
+                            <li>Print a diamond pattern using stars.</li>
+                            <li>Print Floyd's triangle (triangular array of natural numbers).</li>
+                        </ol>
+
+                        <h3>Challenge Problems</h3>
+                        <ol>
+                            <li>Create a guessing game where user guesses a random number.</li>
+                            <li>Print all prime numbers between 1 and 100.</li>
+                            <li>Create a simple text-based calculator that runs until user chooses to exit.</li>
+                            <li>Find the GCD (Greatest Common Divisor) of two numbers using loops.</li>
+                        </ol>
+                    </section>
+
+                    <!-- Interactive Learning Tools -->
+                    <section id="loop-visualizer" class="interactive-section">
+                        <h2>🎮 Interactive Loop Visualizer</h2>
+                        <p>Watch how different loop types execute step by step. Modify the code and see the execution flow.</p>
+                        
+                        <div class="loop-visualizer">
+                            <div class="visualizer-controls">
+                                <div class="control-group">
+                                    <label for="loop-type-select">Loop Type:</label>
+                                    <select id="loop-type-select" class="loop-type-select">
+                                        <option value="for">for loop</option>
+                                        <option value="while">while loop</option>
+                                        <option value="do-while">do-while loop</option>
+                                        <option value="nested">nested loops</option>
+                                    </select>
+                                </div>
+                                <div class="visualizer-actions">
+                                    <button class="btn btn-primary" id="start-visualization">▶ Start</button>
+                                    <button class="btn btn-secondary" id="step-visualization">⏭ Step</button>
+                                    <button class="btn btn-secondary" id="reset-visualization">🔄 Reset</button>
+                                </div>
+                            </div>
+                            
+                            <div class="visualizer-content">
+                                <div class="code-panel">
+                                    <h3>Code</h3>
+                                    <div class="code-display" id="loop-code-display">
+                                        <pre><code class="language-c" id="current-loop-code">for (int i = 1; i <= 5; i++) {
+    printf("%d ", i);
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="execution-panel">
+                                    <h3>Execution</h3>
+                                    <div class="execution-state">
+                                        <div class="variables-panel">
+                                            <h4>Variables</h4>
+                                            <div id="loop-variables"></div>
+                                        </div>
+                                        <div class="output-panel">
+                                            <h4>Output</h4>
+                                            <div id="loop-output"></div>
+                                        </div>
+                                        <div class="iteration-panel">
+                                            <h4>Current Step</h4>
+                                            <div id="current-step"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="pattern-generator" class="interactive-section">
+                        <h2>🎨 Loop Pattern Generator</h2>
+                        <p>Create beautiful patterns using nested loops. Experiment with different loop parameters.</p>
+                        
+                        <div class="pattern-generator">
+                            <div class="pattern-controls">
+                                <div class="control-row">
+                                    <div class="control-group">
+                                        <label for="pattern-type">Pattern Type:</label>
+                                        <select id="pattern-type" class="pattern-select">
+                                            <option value="triangle">Right Triangle</option>
+                                            <option value="inverted-triangle">Inverted Triangle</option>
+                                            <option value="pyramid">Pyramid</option>
+                                            <option value="diamond">Diamond</option>
+                                            <option value="multiplication">Multiplication Table</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="pattern-size">Size:</label>
+                                        <input type="range" id="pattern-size" min="3" max="10" value="5" class="size-slider">
+                                        <span id="size-value">5</span>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="pattern-char">Character:</label>
+                                        <input type="text" id="pattern-char" value="*" maxlength="1" class="char-input">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" id="generate-pattern">Generate Pattern</button>
+                            </div>
+                            
+                            <div class="pattern-display">
+                                <div class="pattern-output">
+                                    <h3>Pattern Output</h3>
+                                    <pre id="pattern-result"></pre>
+                                </div>
+                                <div class="pattern-code">
+                                    <h3>Generated Code</h3>
+                                    <pre><code class="language-c" id="pattern-code-output"></code></pre>
+                                    <button class="copy-btn" data-target="pattern-code-output" title="Copy code">📋</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Achievement Badges Section -->
+                    <section id="loop-achievements" class="achievement-section">
+                        <h2>🏆 Loop Mastery Badges</h2>
+                        <p>Earn badges by completing loop challenges and demonstrating mastery!</p>
+                        
+                        <div class="achievements-grid">
+                            <div class="badge-item" data-badge="loop-beginner">
+                                <div class="badge-icon">🔄</div>
+                                <div class="badge-info">
+                                    <h3>Loop Beginner</h3>
+                                    <p>Complete your first loop quiz</p>
+                                    <div class="badge-progress">
+                                        <span class="progress-text">Not earned</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="badge-item" data-badge="for-master">
+                                <div class="badge-icon">🎯</div>
+                                <div class="badge-info">
+                                    <h3>For Loop Master</h3>
+                                    <p>Score 80%+ on for loop questions</p>
+                                    <div class="badge-progress">
+                                        <span class="progress-text">Not earned</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="badge-item" data-badge="while-wizard">
+                                <div class="badge-icon">🔮</div>
+                                <div class="badge-info">
+                                    <h3>While Loop Wizard</h3>
+                                    <p>Score 80%+ on while loop questions</p>
+                                    <div class="badge-progress">
+                                        <span class="progress-text">Not earned</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="badge-item" data-badge="pattern-artist">
+                                <div class="badge-icon">🎨</div>
+                                <div class="badge-info">
+                                    <h3>Pattern Artist</h3>
+                                    <p>Create 5 different patterns</p>
+                                    <div class="badge-progress">
+                                        <span class="progress-text">0/5 patterns</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="badge-item" data-badge="nested-ninja">
+                                <div class="badge-icon">🥷</div>
+                                <div class="badge-info">
+                                    <h3>Nested Loop Ninja</h3>
+                                    <p>Score 80%+ on nested loop questions</p>
+                                    <div class="badge-progress">
+                                        <span class="progress-text">Not earned</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="badge-item" data-badge="loop-legend">
+                                <div class="badge-icon">👑</div>
+                                <div class="badge-info">
+                                    <h3>Loop Legend</h3>
+                                    <p>Master all loop types with perfect scores</p>
+                                    <div class="badge-progress">
+                                        <span class="progress-text">Not earned</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Enhanced Quiz Section -->
+                    <section id="loops-quiz" class="quiz-section">
+                        <h2>🧠 Loops Mastery Quiz</h2>
+                        <p>Test your understanding of loops with this comprehensive quiz. Track your progress and identify areas for improvement!</p>
+                        
+                        <div class="quiz-container">
+                            <!-- Quiz Questions (populated by JavaScript) -->
+                            <div id="quiz-questions"></div>
+                            
+                            <!-- Quiz Controls -->
+                            <div class="quiz-controls">
+                                <button class="btn btn-primary" id="start-quiz">Start Quiz</button>
+                                <button class="btn btn-secondary" id="next-question" style="display: none;">Next Question</button>
+                                <button class="btn btn-success" id="submit-quiz" style="display: none;">Submit Quiz</button>
+                                <button class="btn btn-secondary" id="restart-quiz" style="display: none;">Try Again</button>
+                            </div>
+                            
+                            <!-- Quiz Results -->
+                            <div id="quiz-results" class="quiz-results" style="display: none;">
+                                <h3>Quiz Results</h3>
+                                <div class="results-summary">
+                                    <div class="score-display">
+                                        <span class="score-number" id="final-score">0</span>
+                                        <span class="score-total">/ 100</span>
+                                    </div>
+                                    <div class="performance-breakdown" id="performance-breakdown"></div>
+                                </div>
+                                
+                                <div class="topic-analysis" id="topic-analysis">
+                                    <h4>Topic Performance</h4>
+                                    <div class="topic-scores" id="topic-scores"></div>
+                                </div>
+                                
+                                <div class="recommendations" id="quiz-recommendations">
+                                    <h4>Recommendations</h4>
+                                    <ul id="recommendation-list"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="common-errors-loops">
+                        <h2>Common Errors with Loops</h2>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Infinite loops</div>
+                            <p><strong>Error:</strong> Loop condition never becomes false<br>
+                            <strong>Example:</strong> <code>for (int i = 1; i >= 1; i++)</code><br>
+                            <strong>Fix:</strong> Ensure the loop variable moves toward the exit condition</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Off-by-one errors</div>
+                            <p><strong>Error:</strong> Loop runs one time too many or too few<br>
+                            <strong>Example:</strong> <code>for (int i = 1; i < 10; i++)</code> (runs 9 times, not 10)<br>
+                            <strong>Fix:</strong> Check your condition: use <= for inclusive, < for exclusive</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Forgetting to update loop variable in while loops</div>
+                            <p><strong>Error:</strong> <code>while (i < 10) { printf("%d", i); }</code> (missing i++)<br>
+                            <strong>Fix:</strong> Always update the loop variable inside the loop body</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Wrong semicolon placement</div>
+                            <p><strong>Error:</strong> <code>for (int i = 0; i < 5; i++); printf("Hi");</code><br>
+                            <strong>Fix:</strong> Remove semicolon after for statement - it creates empty loop body</p>
+                        </div>
+                    </section>
+
+                    <section id="chapter-summary-loops">
+                        <h2>Chapter Summary</h2>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">✅ Before you proceed, make sure you can:</div>
+                            <ul>
+                                <li>Choose the right loop type (for, while, do-while) for different situations</li>
+                                <li>Write for loops with proper initialization, condition, and update</li>
+                                <li>Use while loops for condition-based repetition</li>
+                                <li>Implement do-while loops when code must run at least once</li>
+                                <li>Control loop flow with break and continue</li>
+                                <li>Create nested loops for pattern printing and tables</li>
+                                <li>Avoid infinite loops and off-by-one errors</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Next Step:</strong> Now that you can repeat actions, let's learn how to organize and work with multiple data items using <a href="05-arrays-strings.html">Chapter 5: Arrays & Strings</a>.</p>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for engineering students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/app.js"></script>
+    <script src="../assets/quiz.js" defer></script>
+</body>
+</html>

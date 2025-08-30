@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Introduction to C Programming - History, features, and why learn C">
+    <title>Chapter 1: Introduction to C | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/quiz.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Introduction to C</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="../index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="../index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/01-introduction.html" class="nav-link active" aria-current="page" class="nav-link">Introduction to C</a>
+                        <a href="../chapters/02-basics.html" class="nav-link">Basics & Variables</a>
+                        <a href="../chapters/03-control-flow.html" class="nav-link">Control Flow</a>
+                        <a href="../chapters/04-loops.html" class="nav-link">Loops</a>
+                        <a href="../chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="../chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="../chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="../chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="../chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../practice/basics.html" class="nav-link">Basic Practice</a>
+                        <a href="../practice/control-loops.html" class="nav-link">Control & Loops</a>
+                        <a href="../practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="../practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="../practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="../practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="../practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="../reference/exam-guide.html" class="nav-link">Exam Guide</a>
+                        <a href="../reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <h1>Chapter 1: Introduction to C Programming</h1>
+                    
+                    <section id="what-is-c">
+                        <h2>What is C?</h2>
+                        <p>C is a general-purpose programming language developed by Dennis Ritchie at Bell Labs between 1969 and 1973. It's considered the foundation of modern programming and has influenced many other languages including C++, Java, and JavaScript.</p>
+                        
+                        <div class="callout callout-info">
+                            <div class="callout-title">🎯 Key Point</div>
+                            <p>C is often called the "mother of all programming languages" because most modern languages derive concepts from C.</p>
+                        </div>
+                    </section>
+
+                    <section id="c-history-timeline">
+                        <h2>🕰️ Journey Through C History</h2>
+                        
+                        <div class="timeline-container">
+                            <div class="timeline">
+                                <div class="timeline-item active" data-year="1969">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-year">1969</div>
+                                        <h4>The Beginning</h4>
+                                        <p>Dennis Ritchie starts developing C at Bell Labs for the UNIX operating system</p>
+                                        <div class="timeline-achievement">🎯 Foundation Laid</div>
+                                        <div class="timeline-details">
+                                            <p><strong>Key Innovation:</strong> Combining low-level control with high-level constructs</p>
+                                            <p><strong>Challenge:</strong> Create a language for system programming that's also portable</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" data-year="1972">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-year">1972</div>
+                                        <h4>First C Compiler</h4>
+                                        <p>C compiler successfully compiles itself - a major milestone in programming history</p>
+                                        <div class="timeline-achievement">⚡ Self-Hosting Achieved</div>
+                                        <div class="timeline-details">
+                                            <p><strong>Why Important:</strong> Proved C could handle complex software development</p>
+                                            <p><strong>Impact:</strong> Established C as a viable systems programming language</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" data-year="1978">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-year">1978</div>
+                                        <h4>The C Programming Language Book</h4>
+                                        <p>Kernighan & Ritchie publish the definitive guide that becomes known as "K&R C"</p>
+                                        <div class="timeline-achievement">📚 Classic Born</div>
+                                        <div class="timeline-details">
+                                            <p><strong>Legacy:</strong> Still considered the best C programming book ever written</p>
+                                            <p><strong>Standard:</strong> Defined the original C specification</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" data-year="1989">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-year">1989</div>
+                                        <h4>ANSI C Standard</h4>
+                                        <p>First official standardization of C programming language (C89/C90)</p>
+                                        <div class="timeline-achievement">📋 Officially Standardized</div>
+                                        <div class="timeline-details">
+                                            <p><strong>Impact:</strong> Ensured portability across different systems</p>
+                                            <p><strong>Features:</strong> Function prototypes, void pointers, const keyword</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" data-year="2025">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-year">2025</div>
+                                        <h4>Your Journey Begins</h4>
+                                        <p>You're learning C programming and joining millions of developers worldwide!</p>
+                                        <div class="timeline-achievement">🚀 Future Hero</div>
+                                        <div class="timeline-details">
+                                            <p><strong>Your Mission:</strong> Master the language that powers the digital world</p>
+                                            <p><strong>Your Impact:</strong> Build the next generation of software systems</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-controls">
+                                <button class="timeline-btn" data-action="prev">← Previous</button>
+                                <span class="timeline-progress">1 / 5</span>
+                                <button class="timeline-btn" data-action="next">Next →</button>
+                            </div>
+                        </div>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Did You Know?</div>
+                            <p>C has remained largely unchanged for over 50 years because Dennis Ritchie got the core design so right the first time. Click through the timeline above to explore C's fascinating history!</p>
+                        </div>
+                    </section>
+
+                    <section id="why-learn-c">
+                        <h2>Why Learn C?</h2>
+                        
+                        <h3>1. Foundation of Programming</h3>
+                        <p>Learning C gives you a deep understanding of how computers work at a low level. It teaches you:</p>
+                        <ul>
+                            <li>Memory management</li>
+                            <li>Pointer arithmetic</li>
+                            <li>System-level programming concepts</li>
+                            <li>Efficient algorithm implementation</li>
+                        </ul>
+
+                        <h3>2. Performance and Efficiency</h3>
+                        <p>C programs are fast and use minimal system resources because:</p>
+                        <ul>
+                            <li>Direct memory access</li>
+                            <li>Minimal runtime overhead</li>
+                            <li>Close-to-hardware programming</li>
+                            <li>Efficient compilation</li>
+                        </ul>
+
+                        <h3>3. Portability</h3>
+                        <p>C code can run on virtually any platform with minor or no modifications, making it highly portable across different operating systems and hardware architectures.</p>
+
+                        <h3>4. Industry Relevance</h3>
+                        <p>C is extensively used in:</p>
+                        <ul>
+                            <li>Operating systems (Linux, Windows kernel components)</li>
+                            <li>Embedded systems and IoT devices</li>
+                            <li>System software and device drivers</li>
+                            <li>Game engines and graphics programming</li>
+                            <li>Database systems</li>
+                        </ul>
+                    </section>
+
+                    <section id="features-of-c">
+                        <h2>Features of C</h2>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Description</th>
+                                    <th>Benefit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Simple & Minimalistic</td>
+                                    <td>Small set of keywords (32 keywords)</td>
+                                    <td>Easy to learn and remember</td>
+                                </tr>
+                                <tr>
+                                    <td>Procedural</td>
+                                    <td>Functions are primary building blocks</td>
+                                    <td>Modular and organized code</td>
+                                </tr>
+                                <tr>
+                                    <td>Fast Execution</td>
+                                    <td>Compiles directly to machine code</td>
+                                    <td>High performance applications</td>
+                                </tr>
+                                <tr>
+                                    <td>Memory Management</td>
+                                    <td>Manual control over memory allocation</td>
+                                    <td>Efficient resource utilization</td>
+                                </tr>
+                                <tr>
+                                    <td>Rich Library</td>
+                                    <td>Extensive standard library</td>
+                                    <td>Pre-built functions for common tasks</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="c-vs-other-languages">
+                        <h2>C vs Other Programming Languages</h2>
+                        
+                        <h3>C vs Python</h3>
+                        <ul>
+                            <li><strong>Speed:</strong> C is faster, Python is slower but more developer-friendly</li>
+                            <li><strong>Learning curve:</strong> C has steeper learning curve, Python is beginner-friendly</li>
+                            <li><strong>Use cases:</strong> C for system programming, Python for data science/web development</li>
+                        </ul>
+
+                        <h3>C vs Java</h3>
+                        <ul>
+                            <li><strong>Memory management:</strong> C requires manual management, Java has automatic garbage collection</li>
+                            <li><strong>Platform dependency:</strong> C is platform-dependent, Java is platform-independent</li>
+                            <li><strong>Object-oriented:</strong> C is procedural, Java is object-oriented</li>
+                        </ul>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Learning Strategy</div>
+                            <p>Start with C to understand programming fundamentals, then transition to other languages becomes much easier!</p>
+                        </div>
+                    </section>
+
+                    <section id="applications-of-c">
+                        <h2>Real-World Applications of C</h2>
+                        
+                        <h3>Operating Systems</h3>
+                        <p>Major operating systems written in C:</p>
+                        <ul>
+                            <li>Linux kernel</li>
+                            <li>Windows (significant portions)</li>
+                            <li>macOS (Darwin kernel)</li>
+                            <li>Unix variants</li>
+                        </ul>
+
+                        <h3>Embedded Systems</h3>
+                        <p>C dominates embedded programming:</p>
+                        <ul>
+                            <li>Microcontrollers (Arduino, Raspberry Pi)</li>
+                            <li>IoT devices</li>
+                            <li>Automotive systems</li>
+                            <li>Medical devices</li>
+                        </ul>
+
+                        <h3>System Software</h3>
+                        <ul>
+                            <li>Compilers and interpreters</li>
+                            <li>Device drivers</li>
+                            <li>Database systems (MySQL, PostgreSQL)</li>
+                            <li>Network protocols</li>
+                        </ul>
+                    </section>
+
+                    <section id="getting-started-roadmap">
+                        <h2>Your Learning Roadmap</h2>
+                        
+                        <p>Here's what we'll cover in this course:</p>
+                        
+                        <ol>
+                            <li><strong>Basics (Chapters 1-2):</strong> Syntax, variables, input/output</li>
+                            <li><strong>Control Structures (Chapters 3-4):</strong> Decisions and loops</li>
+                            <li><strong>Data Organization (Chapter 5):</strong> Arrays and strings</li>
+                            <li><strong>Modular Programming (Chapter 6):</strong> Functions and scope</li>
+                            <li><strong>Advanced Memory (Chapter 7):</strong> Pointers and dynamic allocation</li>
+                            <li><strong>Data Structures (Chapter 8):</strong> Structures and user-defined types</li>
+                            <li><strong>File Operations (Chapter 9):</strong> Reading and writing files</li>
+                            <li><strong>Algorithms (Chapter 10):</strong> Searching and sorting</li>
+                        </ol>
+                    </section>
+
+                    <section id="practice-introduction">
+                        <h2>Practice Problems</h2>
+                        
+                        <h3>Conceptual Questions</h3>
+                        <ol>
+                            <li>What are three main advantages of learning C programming?</li>
+                            <li>Name five real-world applications where C is commonly used.</li>
+                            <li>How does C compare to Python in terms of execution speed and why?</li>
+                            <li>What makes C a "portable" programming language?</li>
+                        </ol>
+
+                        <h3>Research Tasks</h3>
+                        <ol>
+                            <li>Research and list 5 famous software projects written in C.</li>
+                            <li>Find out which programming languages were directly influenced by C.</li>
+                            <li>Look up the current version of the C standard and its key features.</li>
+                        </ol>
+                    </section>
+
+                    <section id="common-misconceptions">
+                        <h2>Common Misconceptions About C</h2>
+                        
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ "C is too difficult for beginners"</div>
+                            <p>While C requires understanding of memory management, starting with C actually makes learning other languages easier later.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ "C is outdated"</div>
+                            <p>C remains highly relevant in 2025, especially in systems programming, embedded development, and performance-critical applications.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ "You don't need C if you know other languages"</div>
+                            <p>C provides fundamental understanding of how computers work that high-level languages abstract away.</p>
+                        </div>
+                    </section>
+
+                    <section id="achievement-system">
+                        <h2>🏆 Your Programming Achievements</h2>
+                        
+                        <div class="achievement-system">
+                            <div class="badge-collection">
+                                <div class="badge earned" data-badge="chapter-complete">
+                                    <div class="badge-icon">📚</div>
+                                    <div class="badge-content">
+                                        <h4>C Foundation Explorer</h4>
+                                        <p>Completed Chapter 1: Introduction to C</p>
+                                        <div class="badge-date">Earned: Just now!</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge earned" data-badge="history-master">
+                                    <div class="badge-icon">🕰️</div>
+                                    <div class="badge-content">
+                                        <h4>C History Master</h4>
+                                        <p>Learned about Dennis Ritchie and C's evolution</p>
+                                        <div class="badge-points">+25 XP</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge locked" data-badge="quiz-warrior">
+                                    <div class="badge-icon">🧠</div>
+                                    <div class="badge-content">
+                                        <h4>Quiz Warrior</h4>
+                                        <p>Score 80% or higher on any chapter quiz</p>
+                                        <div class="unlock-hint">Complete a quiz to unlock!</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge locked" data-badge="variable-master">
+                                    <div class="badge-icon">⚡</div>
+                                    <div class="badge-content">
+                                        <h4>Variable Master</h4>
+                                        <p>Master variables and data types</p>
+                                        <div class="progress-bar"><div class="fill" style="width: 0%"></div></div>
+                                        <small>Complete Chapter 2 to unlock</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="chapter-summary">
+                        <h2>Chapter Summary</h2>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">✅ Before you proceed, make sure you can:</div>
+                            <ul>
+                                <li>Explain what C programming is and its key features</li>
+                                <li>List at least 5 real-world applications of C</li>
+                                <li>Understand why C is called the foundation of modern programming</li>
+                                <li>Describe the advantages of learning C as your first programming language</li>
+                                <li>Have a development environment ready (Code::Blocks or similar)</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Next Step:</strong> Now that you understand what C is and why it's important, let's dive into the fundamentals in <a href="02-basics.html">Chapter 2: Basics & Variables</a>.</p>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for AI&ML students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>

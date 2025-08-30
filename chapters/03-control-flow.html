@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Control Flow in C Programming - if/else statements, switch, logical operators">
+    <title>Chapter 3: Control Flow | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/quiz.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Control Flow</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="../index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="../index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/01-introduction.html" class="nav-link">Introduction to C</a>
+                        <a href="../chapters/02-basics.html" class="nav-link">Basics & Variables</a>
+                        <a href="../chapters/03-control-flow.html" class="nav-link active" aria-current="page" class="nav-link">Control Flow</a>
+                        <a href="../chapters/04-loops.html" class="nav-link">Loops</a>
+                        <a href="../chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="../chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="../chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="../chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="../chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../practice/basics.html" class="nav-link">Basic Practice</a>
+                        <a href="../practice/control-loops.html" class="nav-link">Control & Loops</a>
+                        <a href="../practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="../practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="../practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="../practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="../practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="../reference/exam-guide.html" class="nav-link">Exam Guide</a>
+                        <a href="../reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <h1>Chapter 3: Control Flow</h1>
+                    
+                    <section id="if-else-basics">
+                        <h2>Making Decisions with if/else</h2>
+                        <p>Control flow statements let your program make decisions and execute different code based on conditions. The most fundamental decision-making statement is <code>if</code>.</p>
+
+                        <h3>Basic if Statement</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 18;
+    
+    if (age >= 18) {
+        printf("You are eligible to vote.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <h3>if-else Statement</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int marks = 85;
+    
+    if (marks >= 60) {
+        printf("You passed!\n");
+    } else {
+        printf("You failed. Better luck next time.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Key Concepts</div>
+                            <ul>
+                                <li>Condition must be in parentheses: <code>if (condition)</code></li>
+                                <li>Use curly braces <code>{}</code> even for single statements (good practice)</li>
+                                <li>The <code>else</code> part is optional</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="decision-tree-visualizer">
+                        <h2>🌳 Decision Tree Visualizer</h2>
+                        
+                        <p>Understanding how conditions flow in your program can be tricky. Use our interactive Decision Tree Visualizer to see exactly how your if/else statements execute with different inputs!</p>
+                        
+                        <div class="decision-visualizer">
+                            <div class="code-panel">
+                                <h3>📝 Your Conditional Code</h3>
+                                <div class="code-editor">
+                                    <textarea class="decision-code-input" rows="12" spellcheck="false" aria-label="C conditional code input">int age = 25;
+int hasLicense = 1;
+
+if (age >= 18) {
+    if (hasLicense == 1) {
+        printf("You can drive!\n");
+    } else {
+        printf("Get your license first.\n");
+    }
+} else {
+    printf("Too young to drive.\n");
+}</textarea>
+                                </div>
+                                <div class="editor-controls">
+                                    <button class="run-decision">▶️ Trace Decision Path</button>
+                                    <button class="reset-decision">🔄 Reset</button>
+                                </div>
+                            </div>
+                            
+                            <div class="decision-panel">
+                                <h3>🗂️ Decision Flow</h3>
+                                <div class="decision-tree" id="decision-tree">
+                                    <div class="tree-node start-node">
+                                        <div class="node-label">START</div>
+                                        <div class="node-values" id="variable-values">age = 25, hasLicense = 1</div>
+                                    </div>
+                                    
+                                    <div class="tree-connector"></div>
+                                    
+                                    <div class="tree-node condition-node" data-condition="age >= 18">
+                                        <div class="node-label">age >= 18?</div>
+                                        <div class="condition-result">25 >= 18 = true</div>
+                                    </div>
+                                    
+                                    <div class="tree-branches">
+                                        <div class="branch-left">
+                                            <div class="branch-label false-branch">FALSE</div>
+                                            <div class="tree-node result-node inactive">
+                                                <div class="node-label">Print: "Too young to drive."</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="branch-right">
+                                            <div class="branch-label true-branch active">TRUE</div>
+                                            <div class="tree-node condition-node active" data-condition="hasLicense == 1">
+                                                <div class="node-label">hasLicense == 1?</div>
+                                                <div class="condition-result">1 == 1 = true</div>
+                                            </div>
+                                            
+                                            <div class="nested-branches">
+                                                <div class="branch-left">
+                                                    <div class="branch-label false-branch">FALSE</div>
+                                                    <div class="tree-node result-node inactive">
+                                                        <div class="node-label">Print: "Get your license first."</div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="branch-right">
+                                                    <div class="branch-label true-branch">TRUE</div>
+                                                    <div class="tree-node result-node active">
+                                                        <div class="node-label">Print: "You can drive!"</div>
+                                                        <div class="execution-path">✅ EXECUTED</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="decision-controls">
+                                    <h4>🎛️ Test Different Values</h4>
+                                    <div class="control-inputs">
+                                        <div class="input-group">
+                                            <label for="age-input">Age:</label>
+                                            <input type="number" id="age-input" value="25" min="0" max="100">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="license-input">Has License:</label>
+                                            <select id="license-input">
+                                                <option value="1">Yes (1)</option>
+                                                <option value="0">No (0)</option>
+                                            </select>
+                                        </div>
+                                        <button class="update-values">🔄 Update & Trace</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="decision-insights">
+                            <h3>🎯 Key Insights</h3>
+                            <div class="insight-grid">
+                                <div class="insight-item">
+                                    <div class="insight-icon">🔀</div>
+                                    <h4>Path Selection</h4>
+                                    <p>Only one path through the decision tree is executed based on your conditions. Others are skipped.</p>
+                                </div>
+                                
+                                <div class="insight-item">
+                                    <div class="insight-icon">📊</div>
+                                    <h4>Condition Evaluation</h4>
+                                    <p>Each condition is evaluated to true or false, determining which branch to take.</p>
+                                </div>
+                                
+                                <div class="insight-item">
+                                    <div class="insight-icon">🏗️</div>
+                                    <h4>Nested Logic</h4>
+                                    <p>Conditions can be nested inside each other, creating complex decision trees.</p>
+                                </div>
+                                
+                                <div class="insight-item">
+                                    <div class="insight-icon">⚡</div>
+                                    <h4>Early Exit</h4>
+                                    <p>Once a condition is false in an if-else chain, the program skips to the next section.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">🔬 Experiment!</div>
+                            <p>Try different values in the controls above. Watch how the execution path changes! This helps you understand exactly how your conditional logic works.</p>
+                        </div>
+                    </section>
+
+                    <section id="else-if-ladder">
+                        <h2>else-if Ladder</h2>
+                        <p>When you have multiple conditions to check, use the else-if ladder:</p>
+
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int marks;
+    printf("Enter your marks: ");
+    scanf("%d", &marks);
+    
+    if (marks >= 90) {
+        printf("Grade: A+\n");
+    } else if (marks >= 80) {
+        printf("Grade: A\n");
+    } else if (marks >= 70) {
+        printf("Grade: B\n");
+    } else if (marks >= 60) {
+        printf("Grade: C\n");
+    } else if (marks >= 40) {
+        printf("Grade: D\n");
+    } else {
+        printf("Grade: F (Fail)\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-info">
+                            <div class="callout-title">🎯 How it Works</div>
+                            <p>The conditions are checked in order. As soon as one condition is true, that block executes and the rest are skipped.</p>
+                        </div>
+                    </section>
+
+                    <section id="comparison-operators">
+                        <h2>Comparison Operators</h2>
+                        <p>These operators compare two values and return true (1) or false (0):</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Operator</th>
+                                    <th>Meaning</th>
+                                    <th>Example</th>
+                                    <th>Result (if a=5, b=3)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>==</code></td>
+                                    <td>Equal to</td>
+                                    <td><code>a == b</code></td>
+                                    <td>false (0)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>!=</code></td>
+                                    <td>Not equal to</td>
+                                    <td><code>a != b</code></td>
+                                    <td>true (1)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&gt;</code></td>
+                                    <td>Greater than</td>
+                                    <td><code>a > b</code></td>
+                                    <td>true (1)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;</code></td>
+                                    <td>Less than</td>
+                                    <td><code>a < b</code></td>
+                                    <td>false (0)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&gt;=</code></td>
+                                    <td>Greater than or equal</td>
+                                    <td><code>a >= b</code></td>
+                                    <td>true (1)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&lt;=</code></td>
+                                    <td>Less than or equal</td>
+                                    <td><code>a <= b</code></td>
+                                    <td>false (0)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">⚠️ Common Pitfall: = vs ==</div>
+                            <p><strong>NEVER confuse assignment (=) with comparison (==)!</strong></p>
+                            <ul>
+                                <li><code>if (x = 5)</code> ❌ - This assigns 5 to x, then checks if 5 is true (it is)</li>
+                                <li><code>if (x == 5)</code> ✅ - This compares x with 5</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="logical-operators">
+                        <h2>Logical Operators</h2>
+                        <p>Combine multiple conditions using logical operators:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Operator</th>
+                                    <th>Meaning</th>
+                                    <th>Example</th>
+                                    <th>True when</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>&&</code></td>
+                                    <td>AND</td>
+                                    <td><code>a && b</code></td>
+                                    <td>Both a AND b are true</td>
+                                </tr>
+                                <tr>
+                                    <td><code>||</code></td>
+                                    <td>OR</td>
+                                    <td><code>a || b</code></td>
+                                    <td>Either a OR b (or both) is true</td>
+                                </tr>
+                                <tr>
+                                    <td><code>!</code></td>
+                                    <td>NOT</td>
+                                    <td><code>!a</code></td>
+                                    <td>a is false</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Practical Examples</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 20, income = 30000;
+    
+    // AND operator
+    if (age >= 18 && income >= 25000) {
+        printf("Eligible for credit card\n");
+    }
+    
+    // OR operator
+    if (age < 18 || age > 65) {
+        printf("Special discount available\n");
+    }
+    
+    // NOT operator
+    if (!(age < 18)) {  // Same as: age >= 18
+        printf("Adult\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Short-circuit Evaluation</div>
+                            <ul>
+                                <li><strong>AND (&&):</strong> If first condition is false, second isn't evaluated</li>
+                                <li><strong>OR (||):</strong> If first condition is true, second isn't evaluated</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="switch-statement">
+                        <h2>switch Statement</h2>
+                        <p>When comparing a single variable against multiple exact values, <code>switch</code> is cleaner than multiple if-else statements:</p>
+
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int day;
+    printf("Enter day number (1-7): ");
+    scanf("%d", &day);
+    
+    switch (day) {
+        case 1:
+            printf("Monday\n");
+            break;
+        case 2:
+            printf("Tuesday\n");
+            break;
+        case 3:
+            printf("Wednesday\n");
+            break;
+        case 4:
+            printf("Thursday\n");
+            break;
+        case 5:
+            printf("Friday\n");
+            break;
+        case 6:
+            printf("Saturday\n");
+            break;
+        case 7:
+            printf("Sunday\n");
+            break;
+        default:
+            printf("Invalid day number!\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <h3>Menu-driven Program Example</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int choice;
+    float num1, num2;
+    
+    printf("Calculator Menu:\n");
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    
+    printf("Enter two numbers: ");
+    scanf("%f %f", &num1, &num2);
+    
+    switch (choice) {
+        case 1:
+            printf("Result: %.2f\n", num1 + num2);
+            break;
+        case 2:
+            printf("Result: %.2f\n", num1 - num2);
+            break;
+        case 3:
+            printf("Result: %.2f\n", num1 * num2);
+            break;
+        case 4:
+            if (num2 != 0) {
+                printf("Result: %.2f\n", num1 / num2);
+            } else {
+                printf("Error: Division by zero!\n");
+            }
+            break;
+        default:
+            printf("Invalid choice!\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-title">⚠️ Don't Forget break!</div>
+                            <p>Without <code>break</code>, execution "falls through" to the next case. This is usually not what you want!</p>
+                        </div>
+
+                        <h3>When to Use switch vs if-else</h3>
+                        <ul>
+                            <li><strong>Use switch when:</strong> Comparing one variable against multiple exact values</li>
+                            <li><strong>Use if-else when:</strong> Complex conditions, ranges, or different variables</li>
+                        </ul>
+                    </section>
+
+                    <section id="nested-conditions">
+                        <h2>Nested Conditions</h2>
+                        <p>You can place if statements inside other if statements:</p>
+
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age, license;
+    
+    printf("Enter age: ");
+    scanf("%d", &age);
+    
+    if (age >= 18) {
+        printf("Do you have a driving license? (1=Yes, 0=No): ");
+        scanf("%d", &license);
+        
+        if (license == 1) {
+            printf("You can drive!\n");
+        } else {
+            printf("You need to get a driving license first.\n");
+        }
+    } else {
+        printf("You are too young to drive.\n");
+    }
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Keep It Simple</div>
+                            <p>Avoid too many nested levels (more than 3-4). Use logical operators or separate functions instead.</p>
+                        </div>
+                    </section>
+
+                    <section id="practice-control-flow">
+                        <h2>Practice Problems</h2>
+
+                        <h3>Basic Problems</h3>
+                        <ol>
+                            <li>Write a program to check if a number is positive, negative, or zero.</li>
+                            <li>Create a program to find the largest of three numbers.</li>
+                            <li>Write a program to check if a year is a leap year.</li>
+                            <li>Create a simple grading system based on marks (A, B, C, D, F).</li>
+                        </ol>
+
+                        <h3>Intermediate Problems</h3>
+                        <ol>
+                            <li>Write a menu-driven calculator with all four basic operations.</li>
+                            <li>Create a program to determine if a triangle is valid and classify it (equilateral, isosceles, scalene).</li>
+                            <li>Write a program to simulate an ATM withdrawal system with balance checking.</li>
+                        </ol>
+
+                        <h3>Challenge Problems</h3>
+                        <ol>
+                            <li>Create a program that converts numeric grades to letter grades and GPA points.</li>
+                            <li>Write a program to determine electricity bill based on units consumed (with different slabs).</li>
+                            <li>Create a simple text-based adventure game with multiple choices.</li>
+                        </ol>
+                    </section>
+
+                    <section id="common-errors-control-flow">
+                        <h2>Common Errors with Control Flow</h2>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Assignment instead of comparison</div>
+                            <p><strong>Error:</strong> <code>if (x = 5)</code><br>
+                            <strong>Fix:</strong> <code>if (x == 5)</code><br>
+                            <strong>Why:</strong> Single = assigns value; double == compares values.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Missing break in switch</div>
+                            <p><strong>Error:</strong> Cases fall through to next case<br>
+                            <strong>Fix:</strong> Add <code>break;</code> after each case<br>
+                            <strong>Why:</strong> Without break, execution continues to next case.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Semicolon after if condition</div>
+                            <p><strong>Error:</strong> <code>if (x > 5); printf("Big");</code><br>
+                            <strong>Fix:</strong> <code>if (x > 5) printf("Big");</code><br>
+                            <strong>Why:</strong> Semicolon creates an empty statement, breaking the if logic.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Floating point equality</div>
+                            <p><strong>Error:</strong> <code>if (price == 19.99)</code><br>
+                            <strong>Fix:</strong> <code>if (fabs(price - 19.99) < 0.01)</code><br>
+                            <strong>Why:</strong> Floating point numbers aren't stored exactly.</p>
+                        </div>
+                    </section>
+
+                    <section id="quiz-control-flow">
+                        <h2>🧠 Chapter 3 Knowledge Quest</h2>
+                        
+                        <!-- Quiz Preparation Section -->
+                        <div class="quiz-preparation">
+                            <div class="callout callout-info">
+                                <div class="callout-title">🎯 Control Flow Mastery Challenge</div>
+                                <ul>
+                                    <li><strong>Focus Areas:</strong> if/else statements, logical operators, switch cases, nested conditions</li>
+                                    <li><strong>Pro Tips:</strong> Think about condition order, remember break statements in switch</li>
+                                    <li><strong>Time Limit:</strong> 12 minutes (complex logic needs careful thinking!)</li>
+                                    <li><strong>Mastery Goal:</strong> 80% needed for Decision Master badge</li>
+                                </ul>
+                                <div class="quiz-rewards">
+                                    <span class="reward-badge">🎯 Decision Master Badge</span>
+                                    <span class="reward-points">+120 Logic Points</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz" data-quiz-id="control-flow-quiz" data-title="Control Flow Quiz" data-pass="0.8">
+                            <h3 class="quiz-title">🧠 Control Flow Mastery Quiz</h3>
+                            <ol class="quiz-items" aria-describedby="quiz-help"></ol>
+                            <p id="quiz-help" class="sr-only">Select the best answer for each question, then press Check answers.</p>
+                            <button class="quiz-submit">Check answers</button>
+                            <div class="quiz-result" aria-live="polite"></div>
+                            <div class="quiz-badge" hidden></div>
+                        </div>
+
+<script type="application/json" class="quiz-data">
+{
+  "quizId": "control-flow-quiz",
+  "title": "Control Flow Mastery Quiz",
+  "passMark": 0.8,
+  "shuffle": true,
+  "items": [
+    {
+      "q": "What happens if you omit curly braces {} in an if statement with multiple lines?",
+      "choices": [
+        "All lines are executed conditionally",
+        "Only the first line after if is conditional",
+        "Compilation error occurs",
+        "All lines become unconditional"
+      ],
+      "answer": 1,
+      "explain": "Without braces, only the first statement after if is conditional. The rest execute unconditionally, which can cause logic errors."
+    },
+    {
+      "q": "In a switch statement, what happens if you forget a break statement?",
+      "choices": [
+        "The program crashes",
+        "Compilation error",
+        "Execution continues to the next case (fall-through)",
+        "The switch statement ends"
+      ],
+      "answer": 2,
+      "explain": "Without break, execution 'falls through' to the next case. This is rarely desired and is a common source of bugs."
+    },
+    {
+      "q": "Which logical operator has the highest precedence?",
+      "choices": [
+        "|| (logical OR)",
+        "&& (logical AND)", 
+        "! (logical NOT)",
+        "All have equal precedence"
+      ],
+      "answer": 2,
+      "explain": "! (NOT) has highest precedence, then && (AND), then || (OR). Use parentheses to make precedence clear."
+    },
+    {
+      "q": "What is the output of: if (5) printf(\"Hello\");",
+      "choices": [
+        "Compilation error",
+        "Nothing is printed",
+        "Hello",
+        "5"
+      ],
+      "answer": 2,
+      "explain": "Any non-zero value is considered 'true' in C. Since 5 is non-zero, the condition is true and 'Hello' is printed."
+    },
+    {
+      "q": "Which is the best practice for comparing floating-point numbers?",
+      "choices": [
+        "if (price == 19.99)",
+        "if (price = 19.99)",
+        "if (fabs(price - 19.99) < 0.001)",
+        "if (price != 19.99)"
+      ],
+      "answer": 2,
+      "explain": "Floating-point numbers aren't stored exactly. Compare the absolute difference with a small epsilon value instead of direct equality."
+    },
+    {
+      "q": "In nested if statements, which else belongs to which if?",
+      "choices": [
+        "The first if statement",
+        "The last if statement",
+        "The nearest preceding if without an else",
+        "You must always use braces to specify"
+      ],
+      "answer": 2,
+      "explain": "The 'dangling else' rule: else belongs to the nearest preceding if that doesn't already have an else. Use braces for clarity!"
+    },
+    {
+      "q": "What's wrong with: if (x = 5) printf(\"Equal\");",
+      "choices": [
+        "Nothing, it's correct",
+        "Should use == instead of =",
+        "Missing parentheses",
+        "x is not declared"
+      ],
+      "answer": 1,
+      "explain": "This assigns 5 to x (which is always true) instead of comparing. Use == for comparison, = for assignment."
+    },
+    {
+      "q": "Which condition checks if a number is between 1 and 100 (inclusive)?",
+      "choices": [
+        "if (1 <= num <= 100)",
+        "if (num >= 1 && num <= 100)",
+        "if (num > 0 && num < 101)",
+        "Both B and C are correct"
+      ],
+      "answer": 3,
+      "explain": "Option A is invalid C syntax. Both B and C correctly check the range, but B is more readable and explicit."
+    },
+    {
+      "q": "When should you use switch instead of if-else?",
+      "choices": [
+        "When comparing floating-point values",
+        "When you have many conditions on the same variable",
+        "When using logical operators",
+        "Switch is always better than if-else"
+      ],
+      "answer": 1,
+      "explain": "Use switch for multiple discrete values of the same variable. It's cleaner and potentially more efficient than long if-else chains."
+    },
+    {
+      "q": "What does the expression (a > b) ? a : b do?",
+      "choices": [
+        "Assigns the larger value to both a and b",
+        "Returns the larger of a and b",
+        "Compares a and b for equality",
+        "This is invalid syntax"
+      ],
+      "answer": 1,
+      "explain": "This is the ternary operator (condition ? value1 : value2). It returns 'a' if a > b is true, otherwise returns 'b'."
+    }
+  ]
+}
+</script>
+                        
+                        <!-- Enhanced Quiz Analytics Section -->
+                        <div class="quiz-analytics" id="quiz-analytics-control-flow" style="display: none;">
+                            <h4>📊 Your Control Flow Performance</h4>
+                            <div class="performance-breakdown">
+                                <div class="topic-performance">
+                                    <span class="topic-label">if/else Statements:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="topic-performance">
+                                    <span class="topic-label">Logical Operators:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="topic-performance">
+                                    <span class="topic-label">Switch Statements:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="topic-performance">
+                                    <span class="topic-label">Best Practices:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="improvement-suggestions">
+                                <h5>💡 Areas for Improvement:</h5>
+                                <ul class="suggestions-list">
+                                    <!-- Populated by JavaScript based on performance -->
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="achievement-system-control-flow">
+                        <h2>🏆 Control Flow Achievements</h2>
+                        
+                        <div class="achievement-system">
+                            <div class="badge-collection">
+                                <div class="badge earned" data-badge="decision-explorer">
+                                    <div class="badge-icon">🎯</div>
+                                    <div class="badge-content">
+                                        <h4>Decision Explorer</h4>
+                                        <p>Mastered basic if/else conditional statements</p>
+                                        <div class="badge-date">Earned: Just now!</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge earned" data-badge="logic-wizard">
+                                    <div class="badge-icon">🧙‍♂️</div>
+                                    <div class="badge-content">
+                                        <h4>Logic Wizard</h4>
+                                        <p>Expert in logical operators and complex conditions</p>
+                                        <div class="badge-points">+80 XP</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge locked" data-badge="decision-master" id="decision-master-badge">
+                                    <div class="badge-icon">🎯</div>
+                                    <div class="badge-content">
+                                        <h4>Decision Master</h4>
+                                        <p>Score 80% or higher on Control Flow quiz</p>
+                                        <div class="unlock-hint">Take the quiz above to unlock!</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge locked" data-badge="switch-pro">
+                                    <div class="badge-icon">⚡</div>
+                                    <div class="badge-content">
+                                        <h4>Switch Pro</h4>
+                                        <p>Master of switch statements and fall-through logic</p>
+                                        <div class="progress-bar"><div class="fill" style="width: 90%"></div></div>
+                                        <small>Almost there!</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-icon">📚</div>
+                                    <div class="stat-number">3</div>
+                                    <div class="stat-label">Chapters Completed</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">🏆</div>
+                                    <div class="stat-number" id="badge-count-cf">6</div>
+                                    <div class="stat-label">Badges Earned</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">⚡</div>
+                                    <div class="stat-number" id="xp-total-cf">380</div>
+                                    <div class="stat-label">Total XP</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">🎯</div>
+                                    <div class="stat-number" id="avg-score-cf">87%</div>
+                                    <div class="stat-label">Average Score</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="chapter-summary-control-flow">
+                        <h2>Chapter Summary</h2>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">✅ Before you proceed, make sure you can:</div>
+                            <ul>
+                                <li>Write if-else statements for decision making</li>
+                                <li>Use comparison operators (==, !=, >, <, >=, <=) correctly</li>
+                                <li>Combine conditions with logical operators (&&, ||, !)</li>
+                                <li>Implement switch statements for multiple exact value comparisons</li>
+                                <li>Avoid the common pitfall of = vs ==</li>
+                                <li>Choose between if-else and switch appropriately</li>
+                                <li>Write menu-driven programs</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Next Step:</strong> Now that you can make decisions in your programs, let's learn how to repeat actions efficiently with <a href="04-loops.html">Chapter 4: Loops</a>.</p>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for AI&ML students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/app.js"></script>
+    <script src="../assets/quiz.js" defer></script>
+</body>
+</html>

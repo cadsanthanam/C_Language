@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="C Programming Exam Guide - Study strategies, common questions, and preparation tips">
+    <title>Exam Preparation Guide | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Exam Guide</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="../index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="../index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/01-introduction.html" class="nav-link">Introduction to C</a>
+                        <a href="../chapters/02-basics.html" class="nav-link">Basics & Variables</a>
+                        <a href="../chapters/03-control-flow.html" class="nav-link">Control Flow</a>
+                        <a href="../chapters/04-loops.html" class="nav-link">Loops</a>
+                        <a href="../chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="../chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="../chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="../chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="../chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../practice/basics.html" class="nav-link">Basic Practice</a>
+                        <a href="../practice/control-loops.html" class="nav-link">Control & Loops</a>
+                        <a href="../practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="../practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="../practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="../practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="../practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="../reference/exam-guide.html" class="nav-link active" aria-current="page" class="nav-link">Exam Guide</a>
+                        <a href="../reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <h1>C Programming Exam Preparation Guide</h1>
+                    
+                    <section id="study-strategy">
+                        <h2>Study Strategy</h2>
+                        
+                        <h3>2 Weeks Before Exam</h3>
+                        <ul>
+                            <li><strong>Review all concepts:</strong> Go through each chapter systematically</li>
+                            <li><strong>Practice coding daily:</strong> Write at least 2-3 programs per day</li>
+                            <li><strong>Focus on weak areas:</strong> Identify topics you struggle with</li>
+                            <li><strong>Make summary notes:</strong> Create quick reference sheets</li>
+                        </ul>
+
+                        <h3>1 Week Before Exam</h3>
+                        <ul>
+                            <li><strong>Intensive practice:</strong> Solve previous year papers</li>
+                            <li><strong>Code tracing:</strong> Practice tracing through code execution</li>
+                            <li><strong>Time management:</strong> Practice under timed conditions</li>
+                            <li><strong>Group study:</strong> Discuss difficult concepts with peers</li>
+                        </ul>
+
+                        <h3>1 Day Before Exam</h3>
+                        <ul>
+                            <li><strong>Light review:</strong> Go through summary notes only</li>
+                            <li><strong>Rest well:</strong> Get adequate sleep</li>
+                            <li><strong>Stay calm:</strong> Avoid learning new concepts</li>
+                            <li><strong>Check materials:</strong> Ensure you have required items</li>
+                        </ul>
+                    </section>
+
+                    <section id="exam-day-tips">
+                        <h2>Exam Day Tips</h2>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">⏰ Time Management</div>
+                            <ul>
+                                <li><strong>Read all questions first</strong> (5 minutes)</li>
+                                <li><strong>Start with easiest questions</strong> to build confidence</li>
+                                <li><strong>Allocate time per question</strong> based on marks</li>
+                                <li><strong>Reserve 10 minutes</strong> for final review</li>
+                            </ul>
+                        </div>
+
+                        <h3>Code Writing Strategy</h3>
+                        <ol>
+                            <li><strong>Plan before coding:</strong> Write logic in comments first</li>
+                            <li><strong>Start with includes:</strong> #include &lt;stdio.h&gt;</li>
+                            <li><strong>Write main function:</strong> int main() { ... return 0; }</li>
+                            <li><strong>Add input/output:</strong> printf and scanf statements</li>
+                            <li><strong>Implement logic:</strong> Fill in the algorithm</li>
+                            <li><strong>Check syntax:</strong> Verify semicolons, braces, parentheses</li>
+                        </ol>
+                    </section>
+
+                    <section id="common-exam-questions">
+                        <h2>Common Exam Question Types</h2>
+                        
+                        <h3>1. Code Output Questions</h3>
+                        <p><strong>Strategy:</strong> Trace through the code step by step</p>
+                        <pre><code class="language-c">int main() {
+    int i = 5;
+    while (i > 0) {
+        printf("%d ", i--);
+    }
+    return 0;
+}</code></pre>
+                        <p><strong>Trace:</strong> i=5 prints 5, i=4 prints 4, i=3 prints 3, i=2 prints 2, i=1 prints 1, i=0 exits<br>
+                        <strong>Output:</strong> 5 4 3 2 1</p>
+
+                        <h3>2. Error Detection</h3>
+                        <p><strong>Common errors to look for:</strong></p>
+                        <ul>
+                            <li>Missing semicolons</li>
+                            <li>Missing #include statements</li>
+                            <li>Wrong format specifiers (%d vs %f)</li>
+                            <li>Missing & in scanf</li>
+                            <li>Assignment (=) vs comparison (==)</li>
+                        </ul>
+
+                        <h3>3. Program Writing</h3>
+                        <p><strong>Popular programming questions:</strong></p>
+                        <ul>
+                            <li>Check if number is prime</li>
+                            <li>Calculate factorial</li>
+                            <li>Find largest/smallest in array</li>
+                            <li>Reverse a number</li>
+                            <li>Pattern printing</li>
+                            <li>Matrix operations</li>
+                            <li>String manipulation</li>
+                        </ul>
+                    </section>
+
+                    <section id="topic-wise-checklist">
+                        <h2>Topic-wise Preparation Checklist</h2>
+
+                        <h3>✅ Basics & I/O</h3>
+                        <ul>
+                            <li>Data types and their sizes</li>
+                            <li>Format specifiers (%d, %f, %c, %s)</li>
+                            <li>scanf with & operator</li>
+                            <li>Variable naming rules</li>
+                            <li>Constants (#define vs const)</li>
+                        </ul>
+
+                        <h3>✅ Control Flow</h3>
+                        <ul>
+                            <li>if-else vs switch (when to use each)</li>
+                            <li>Comparison operators (==, !=, <, >, <=, >=)</li>
+                            <li>Logical operators (&&, ||, !)</li>
+                            <li>Nested if statements</li>
+                            <li>break statement in switch</li>
+                        </ul>
+
+                        <h3>✅ Loops</h3>
+                        <ul>
+                            <li>for vs while vs do-while (differences)</li>
+                            <li>Loop control (break, continue)</li>
+                            <li>Nested loops for patterns</li>
+                            <li>Infinite loop prevention</li>
+                            <li>Loop termination conditions</li>
+                        </ul>
+
+                        <h3>✅ Arrays</h3>
+                        <ul>
+                            <li>Array declaration and initialization</li>
+                            <li>Array indexing (0-based)</li>
+                            <li>2D arrays and matrix operations</li>
+                            <li>String handling with character arrays</li>
+                            <li>Array bounds and overflow</li>
+                        </ul>
+
+                        <h3>✅ Functions</h3>
+                        <ul>
+                            <li>Function declaration vs definition</li>
+                            <li>Parameter passing (call by value)</li>
+                            <li>Return statement usage</li>
+                            <li>Local vs global scope</li>
+                            <li>Recursion basics</li>
+                        </ul>
+
+                        <h3>✅ Pointers</h3>
+                        <ul>
+                            <li>Pointer declaration and initialization</li>
+                            <li>Address (&) and indirection (*) operators</li>
+                            <li>Pointers and arrays relationship</li>
+                            <li>Pointer arithmetic basics</li>
+                            <li>NULL pointer concept</li>
+                        </ul>
+
+                        <h3>✅ Structures</h3>
+                        <ul>
+                            <li>Structure definition and declaration</li>
+                            <li>Member access (. operator)</li>
+                            <li>Array of structures</li>
+                            <li>Structure initialization</li>
+                        </ul>
+
+                        <h3>✅ Files</h3>
+                        <ul>
+                            <li>File opening modes (r, w, a)</li>
+                            <li>fopen, fclose, fprintf, fscanf</li>
+                            <li>File pointer concept</li>
+                            <li>Error handling in file operations</li>
+                        </ul>
+                    </section>
+
+                    <section id="quick-reference-formulas">
+                        <h2>Quick Reference & Formulas</h2>
+                        
+                        <div class="callout callout-info">
+                            <div class="callout-title">🔢 Mathematical Patterns</div>
+                            <ul>
+                                <li><strong>Sum of first n numbers:</strong> n × (n + 1) / 2</li>
+                                <li><strong>Sum of squares:</strong> n × (n + 1) × (2n + 1) / 6</li>
+                                <li><strong>Factorial:</strong> n! = n × (n-1) × (n-2) × ... × 1</li>
+                                <li><strong>Fibonacci:</strong> F(n) = F(n-1) + F(n-2)</li>
+                                <li><strong>Prime check:</strong> Test divisors up to √n</li>
+                            </ul>
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data Type</th>
+                                    <th>Size (bytes)</th>
+                                    <th>Format</th>
+                                    <th>Range</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>int</td>
+                                    <td>4</td>
+                                    <td>%d</td>
+                                    <td>-2,147,483,648 to 2,147,483,647</td>
+                                </tr>
+                                <tr>
+                                    <td>float</td>
+                                    <td>4</td>
+                                    <td>%f</td>
+                                    <td>±3.4E±38 (7 digits)</td>
+                                </tr>
+                                <tr>
+                                    <td>double</td>
+                                    <td>8</td>
+                                    <td>%lf</td>
+                                    <td>±1.7E±308 (15 digits)</td>
+                                </tr>
+                                <tr>
+                                    <td>char</td>
+                                    <td>1</td>
+                                    <td>%c</td>
+                                    <td>-128 to 127</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="code-templates">
+                        <h2>Essential Code Templates</h2>
+
+                        <h3>Array Processing Template</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int n, arr[100];
+    
+    // Input
+    printf("Enter size: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Processing (example: find max)
+    int max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) max = arr[i];
+    }
+    
+    // Output
+    printf("Maximum: %d\n", max);
+    return 0;
+}</code></pre>
+
+                        <h3>String Processing Template</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[100];
+    
+    printf("Enter string: ");
+    gets(str);  // or fgets(str, 100, stdin);
+    
+    // Processing
+    int len = strlen(str);
+    printf("Length: %d\n", len);
+    
+    return 0;
+}</code></pre>
+
+                        <h3>File I/O Template</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *fp = fopen("data.txt", "r");
+    if (fp == NULL) {
+        printf("File not found!\n");
+        return 1;
+    }
+    
+    // Read/Write operations
+    int data;
+    while (fscanf(fp, "%d", &data) != EOF) {
+        printf("%d ", data);
+    }
+    
+    fclose(fp);
+    return 0;
+}</code></pre>
+                    </section>
+
+                    <section id="exam-mistakes">
+                        <h2>Common Exam Mistakes to Avoid</h2>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Syntax Errors</div>
+                            <ul>
+                                <li>Missing semicolons after statements</li>
+                                <li>Unmatched braces { }</li>
+                                <li>Wrong case in keywords (Printf instead of printf)</li>
+                                <li>Missing quotes in strings</li>
+                            </ul>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Logic Errors</div>
+                            <ul>
+                                <li>Off-by-one errors in loops</li>
+                                <li>Wrong loop termination conditions</li>
+                                <li>Array index out of bounds</li>
+                                <li>Uninitialized variables</li>
+                            </ul>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Poor Presentation</div>
+                            <ul>
+                                <li>Unreadable handwriting</li>
+                                <li>Poor code indentation</li>
+                                <li>No comments for complex logic</li>
+                                <li>Incomplete programs</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="final-tips">
+                        <h2>Final Success Tips</h2>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">🎯 Remember</div>
+                            <ul>
+                                <li><strong>Practice consistently:</strong> Code every day, even if just 30 minutes</li>
+                                <li><strong>Understand, don't memorize:</strong> Focus on logic over syntax</li>
+                                <li><strong>Test your code mentally:</strong> Trace through with sample inputs</li>
+                                <li><strong>Stay calm:</strong> If stuck on one question, move to the next</li>
+                                <li><strong>Review thoroughly:</strong> Check your answers before submitting</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Good luck with your C programming exam! 🚀</strong></p>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for engineering students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>

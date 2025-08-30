@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="C Programming Basics - Variables, Data Types, Input/Output, and Format Specifiers">
+    <title>Chapter 2: Basics & Variables | C Programming: Zero to Hero</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/quiz.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Basics & Variables</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 35%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="../index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="../index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/01-introduction.html" class="nav-link">Introduction to C</a>
+                        <a href="../chapters/02-basics.html" class="nav-link active" aria-current="page" class="nav-link">Basics & Variables</a>
+                        <a href="../chapters/03-control-flow.html" class="nav-link">Control Flow</a>
+                        <a href="../chapters/04-loops.html" class="nav-link">Loops</a>
+                        <a href="../chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="../chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="../chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="../chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="../chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../practice/basics.html" class="nav-link">Basic Practice</a>
+                        <a href="../practice/control-loops.html" class="nav-link">Control & Loops</a>
+                        <a href="../practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="../practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="../practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="../practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="../practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="../reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="../reference/exam-guide.html" class="nav-link">Exam Guide</a>
+                        <a href="../reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <h1>Chapter 2: Basics & Variables</h1>
+                    
+                    <section id="variables-introduction">
+                        <h2>What are Variables?</h2>
+                        <p>A variable is a named storage location in memory that can hold data. Think of it like a labeled box where you can store different types of information.</p>
+                        
+                        <div class="callout callout-info">
+                            <div class="callout-title">🎯 Key Concept</div>
+                            <p>Variables have three important properties: <strong>Name</strong> (identifier), <strong>Type</strong> (what kind of data), and <strong>Value</strong> (the actual data stored).</p>
+                        </div>
+
+                        <h3>Variable Declaration Syntax</h3>
+                        <pre><code class="language-c">data_type variable_name;</code></pre>
+
+                        <p>Example:</p>
+                        <pre><code class="language-c">int age;        // Declaration
+age = 20;       // Assignment
+int height = 175;  // Declaration + Initialization</code></pre>
+                    </section>
+
+                    <section id="data-types">
+                        <h2>Data Types in C</h2>
+                        
+                        <p>C provides several built-in data types to store different kinds of information:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data Type</th>
+                                    <th>Size</th>
+                                    <th>Range</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>int</code></td>
+                                    <td>4 bytes</td>
+                                    <td>-2,147,483,648 to 2,147,483,647</td>
+                                    <td>42, -100, 0</td>
+                                </tr>
+                                <tr>
+                                    <td><code>float</code></td>
+                                    <td>4 bytes</td>
+                                    <td>±3.4E±38 (6 decimal places)</td>
+                                    <td>3.14, -2.5, 0.001</td>
+                                </tr>
+                                <tr>
+                                    <td><code>double</code></td>
+                                    <td>8 bytes</td>
+                                    <td>±1.7E±308 (15 decimal places)</td>
+                                    <td>3.14159265359</td>
+                                </tr>
+                                <tr>
+                                    <td><code>char</code></td>
+                                    <td>1 byte</td>
+                                    <td>-128 to 127 (or 0 to 255)</td>
+                                    <td>'A', '5', '\n'</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Choosing the Right Data Type</h3>
+                        <ul>
+                            <li><strong>int:</strong> For whole numbers (age, count, scores)</li>
+                            <li><strong>float:</strong> For decimal numbers with moderate precision</li>
+                            <li><strong>double:</strong> For decimal numbers requiring high precision</li>
+                            <li><strong>char:</strong> For single characters or small integers</li>
+                        </ul>
+                    </section>
+
+                    <section id="memory-visualizer">
+                        <h2>🧠 Memory Explorer: See Variables in Action</h2>
+                        
+                        <p>Ever wondered how your variables are actually stored in computer memory? Use our interactive Memory Visualizer to see exactly how different data types are allocated and organized!</p>
+                        
+                        <div class="memory-visualizer">
+                            <div class="code-panel">
+                                <h3>📝 Your C Code</h3>
+                                <div class="code-editor">
+                                    <textarea class="memory-code-input" rows="8" spellcheck="false" aria-label="C code input for memory visualization">int age = 25;
+float height = 5.8;
+char grade = 'A';
+double pi = 3.14159;</textarea>
+                                </div>
+                                <div class="editor-controls">
+                                    <button class="run-simulation">▶️ Watch Memory Allocation</button>
+                                    <button class="reset-memory">🔄 Reset</button>
+                                </div>
+                            </div>
+                            
+                            <div class="memory-panel">
+                                <h3>🔍 Memory Layout</h3>
+                                <div class="memory-grid">
+                                    <div class="memory-legend">
+                                        <div class="legend-item">
+                                            <div class="legend-color int-color"></div>
+                                            <span>int (4 bytes)</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-color float-color"></div>
+                                            <span>float (4 bytes)</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-color char-color"></div>
+                                            <span>char (1 byte)</span>
+                                        </div>
+                                        <div class="legend-item">
+                                            <div class="legend-color double-color"></div>
+                                            <span>double (8 bytes)</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="memory-blocks" id="memory-blocks">
+                                        <!-- Memory blocks will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                                
+                                <div class="memory-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Total Memory Used:</span>
+                                        <span class="stat-value" id="total-memory">0 bytes</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Variables Count:</span>
+                                        <span class="stat-value" id="var-count">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Next Address:</span>
+                                        <span class="stat-value" id="next-address">0x1000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-insights">
+                            <h3>🎯 Key Insights</h3>
+                            <div class="insight-grid">
+                                <div class="insight-item">
+                                    <div class="insight-icon">📏</div>
+                                    <h4>Size Matters</h4>
+                                    <p>Different data types occupy different amounts of memory. An <code>int</code> takes 4 bytes, while a <code>char</code> only needs 1 byte.</p>
+                                </div>
+                                
+                                <div class="insight-item">
+                                    <div class="insight-icon">📍</div>
+                                    <h4>Memory Addresses</h4>
+                                    <p>Each variable gets a unique memory address. This is why we use <code>&</code> with <code>scanf</code> - to tell it where to store the input!</p>
+                                </div>
+                                
+                                <div class="insight-item">
+                                    <div class="insight-icon">🎯</div>
+                                    <h4>Sequential Allocation</h4>
+                                    <p>Variables are typically allocated in the order they're declared, one after another in memory.</p>
+                                </div>
+                                
+                                <div class="insight-item">
+                                    <div class="insight-icon">⚡</div>
+                                    <h4>Memory Efficiency</h4>
+                                    <p>Choose the smallest data type that can hold your data to make your programs more memory-efficient!</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="callout callout-info">
+                            <div class="callout-title">💡 Try This!</div>
+                            <p>Experiment with the code above! Try adding more variables, changing their types, or declaring arrays. Watch how memory allocation changes in real-time.</p>
+                        </div>
+                    </section>
+
+                    <section id="variable-naming">
+                        <h2>Variable Naming Rules</h2>
+                        
+                        <h3>Rules (Must Follow)</h3>
+                        <ol>
+                            <li>Must start with a letter (a-z, A-Z) or underscore (_)</li>
+                            <li>Can contain letters, digits (0-9), and underscores</li>
+                            <li>Cannot contain spaces or special characters</li>
+                            <li>Cannot be a C keyword (reserved words)</li>
+                            <li>Case-sensitive (age and Age are different)</li>
+                        </ol>
+
+                        <h3>Conventions (Best Practices)</h3>
+                        <ul>
+                            <li>Use meaningful names: <code>studentAge</code> instead of <code>sa</code></li>
+                            <li>Use camelCase or snake_case consistently</li>
+                            <li>Constants in UPPERCASE: <code>MAX_SIZE</code></li>
+                            <li>Avoid single-letter names except for loop counters</li>
+                        </ul>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Naming Examples</div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Valid</th>
+                                        <th>Invalid</th>
+                                        <th>Poor Choice</th>
+                                        <th>Good Choice</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>age, _temp, num1</td>
+                                        <td>2age, my-var, int</td>
+                                        <td>a, x, temp</td>
+                                        <td>studentAge, totalScore</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="input-output">
+                        <h2>Input and Output</h2>
+                        
+                        <h3>Output with printf()</h3>
+                        <p>The <code>printf()</code> function displays output to the screen:</p>
+
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    printf("The answer is %d\n", 42);
+    return 0;
+}</code></pre>
+
+                        <h3>Input with scanf()</h3>
+                        <p>The <code>scanf()</code> function reads input from the keyboard:</p>
+
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    printf("You are %d years old.\n", age);
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-warning">
+                            <div class="callout-title">⚠️ The & Symbol in scanf</div>
+                            <p>Notice the <code>&</code> before the variable name in <code>scanf</code>. This gives scanf the <strong>address</strong> of the variable so it can store the input there. Without &, scanf doesn't know where to put the data!</p>
+                        </div>
+                    </section>
+
+                    <section id="format-specifiers">
+                        <h2>Format Specifiers</h2>
+                        
+                        <p>Format specifiers tell printf and scanf what type of data to expect:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Specifier</th>
+                                    <th>Data Type</th>
+                                    <th>Purpose</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>%d</code></td>
+                                    <td>int</td>
+                                    <td>Decimal integer</td>
+                                    <td>printf("%d", 42);</td>
+                                </tr>
+                                <tr>
+                                    <td><code>%f</code></td>
+                                    <td>float/double</td>
+                                    <td>Floating point</td>
+                                    <td>printf("%f", 3.14);</td>
+                                </tr>
+                                <tr>
+                                    <td><code>%c</code></td>
+                                    <td>char</td>
+                                    <td>Single character</td>
+                                    <td>printf("%c", 'A');</td>
+                                </tr>
+                                <tr>
+                                    <td><code>%s</code></td>
+                                    <td>string</td>
+                                    <td>String of characters</td>
+                                    <td>printf("%s", "Hello");</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Formatting Options</h3>
+                        <pre><code class="language-c">printf("%.2f", 3.14159);     // Output: 3.14 (2 decimal places)
+printf("%5d", 42);            // Output:    42 (5 characters wide)
+printf("%-5d", 42);           // Output: 42    (left-aligned)
+printf("%05d", 42);           // Output: 00042 (zero-padded)</code></pre>
+                    </section>
+
+                    <section id="complete-example">
+                        <h2>Complete Example Program</h2>
+                        
+                        <p>Let's create a program that demonstrates all the concepts:</p>
+
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // Variable declarations
+    int age;
+    float height;
+    char grade;
+    
+    // Get user input
+    printf("=== Student Information System ===\n");
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    printf("Enter your height (in meters): ");
+    scanf("%f", &height);
+    
+    printf("Enter your grade: ");
+    scanf(" %c", &grade);  // Note the space before %c
+    
+    // Display the information
+    printf("\n=== Your Information ===\n");
+    printf("Age: %d years old\n", age);
+    printf("Height: %.2f meters\n", height);
+    printf("Grade: %c\n", grade);
+    
+    // Some calculations
+    int ageInMonths = age * 12;
+    printf("You are approximately %d months old.\n", ageInMonths);
+    
+    return 0;
+}</code></pre>
+
+                        <div class="callout callout-tip">
+                            <div class="callout-title">🔍 Code Breakdown</div>
+                            <ul>
+                                <li>Line 5-7: Variable declarations for different data types</li>
+                                <li>Line 10-16: Input using scanf with appropriate format specifiers</li>
+                                <li>Line 19-22: Output using printf with formatting</li>
+                                <li>Line 25-26: Simple calculation and display</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="constants">
+                        <h2>Constants</h2>
+                        
+                        <p>Constants are values that don't change during program execution:</p>
+
+                        <h3>Using #define</h3>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+#define PI 3.14159
+#define MAX_STUDENTS 100
+
+int main() {
+    printf("Value of PI: %f\n", PI);
+    printf("Maximum students: %d\n", MAX_STUDENTS);
+    return 0;
+}</code></pre>
+
+                        <h3>Using const keyword</h3>
+                        <pre><code class="language-c">const int MAX_SIZE = 50;
+const float TAX_RATE = 0.08;</code></pre>
+                    </section>
+
+                    <section id="practice-basics">
+                        <h2>Practice Problems</h2>
+                        
+                        <h3>Basic Programs</h3>
+                        <ol>
+                            <li>Write a program to input and display a student's name, age, and marks.</li>
+                            <li>Create a program to calculate the area of a rectangle (length × width).</li>
+                            <li>Write a program to convert temperature from Celsius to Fahrenheit.</li>
+                            <li>Create a program to calculate simple interest (P × R × T / 100).</li>
+                        </ol>
+
+                        <h3>Challenge Problems</h3>
+                        <ol>
+                            <li>Write a program that swaps two numbers without using a third variable.</li>
+                            <li>Create a program to find the ASCII value of a character.</li>
+                            <li>Write a program to calculate the average of three numbers with proper formatting.</li>
+                        </ol>
+                    </section>
+
+                    <section id="common-errors-basics">
+                        <h2>Common Errors and Solutions</h2>
+                        
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Forgetting the & in scanf</div>
+                            <p><strong>Error:</strong> <code>scanf("%d", age);</code><br>
+                            <strong>Fix:</strong> <code>scanf("%d", &age);</code><br>
+                            <strong>Why:</strong> scanf needs the memory address to store the input.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Wrong format specifier</div>
+                            <p><strong>Error:</strong> <code>printf("%d", 3.14);</code> (using %d for float)<br>
+                            <strong>Fix:</strong> <code>printf("%f", 3.14);</code><br>
+                            <strong>Why:</strong> Each data type needs its matching format specifier.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Uninitialized variables</div>
+                            <p><strong>Error:</strong> Using a variable without assigning a value first<br>
+                            <strong>Fix:</strong> Always initialize variables: <code>int count = 0;</code><br>
+                            <strong>Why:</strong> Uninitialized variables contain garbage values.</p>
+                        </div>
+
+                        <div class="callout callout-error">
+                            <div class="callout-title">❌ Character input after numeric input</div>
+                            <p><strong>Problem:</strong> <code>scanf("%c", &ch);</code> after <code>scanf("%d", &num);</code><br>
+                            <strong>Fix:</strong> <code>scanf(" %c", &ch);</code> (note the space)<br>
+                            <strong>Why:</strong> The space consumes any leftover whitespace characters.</p>
+                        </div>
+                    </section>
+
+                    <section id="quiz-basics">
+                        <h2>🧠 Chapter 2 Knowledge Quest</h2>
+                        
+                        <!-- Quiz Preparation Section -->
+                        <div class="quiz-preparation">
+                            <div class="callout callout-info">
+                                <div class="callout-title">🎯 Quiz Strategy Tips</div>
+                                <ul>
+                                    <li><strong>Review Key Concepts:</strong> Data types, format specifiers, scanf usage</li>
+                                    <li><strong>Common Mistakes:</strong> Missing & in scanf, wrong format specifiers</li>
+                                    <li><strong>Time Limit:</strong> 10 minutes (don't rush, think carefully!)</li>
+                                    <li><strong>Scoring:</strong> 80% needed for mastery badge</li>
+                                </ul>
+                                <div class="quiz-rewards">
+                                    <span class="reward-badge">🏆 Variable Master Badge</span>
+                                    <span class="reward-points">+100 Knowledge Points</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz" data-quiz-id="basics-quiz" data-title="Basics Quiz" data-pass="0.8">
+                            <h3 class="quiz-title">Quick Quiz: C Basics</h3>
+                            <ol class="quiz-items" aria-describedby="quiz-help"></ol>
+                            <p id="quiz-help" class="sr-only">Select the best answer for each question, then press Check answers.</p>
+                            <button class="quiz-submit">Check answers</button>
+                            <div class="quiz-result" aria-live="polite"></div>
+                            <div class="quiz-badge" hidden></div>
+                        </div>
+
+<script type="application/json" class="quiz-data">
+{
+  "shuffle": true,
+  "passMark": 0.8,
+  "items": [
+    {
+      "q": "Which format specifier is used to print an integer?",
+      "choices": ["%d", "%f", "%c", "%s"],
+      "answer": 0,
+      "explain": "%d is for integers. Use %f for float, %c for char, %s for string."
+    },
+    {
+      "q": "Why do we use & with scanf for an int variable?",
+      "choices": [
+        "To pass the value",
+        "To pass the address where input will be stored",
+        "To format the output",
+        "It is optional"
+      ],
+      "answer": 1,
+      "explain": "scanf needs the variable's memory address to store the input value there."
+    },
+    {
+      "q": "Which is a valid C identifier?",
+      "choices": ["2age", "my-var", "int", "studentAge"],
+      "answer": 3,
+      "explain": "Identifiers cannot start with digits, contain hyphens, or be keywords like 'int'."
+    },
+    {
+      "q": "What does printf(\"%.2f\", 3.14159) print?",
+      "choices": ["3.14159", "3.14", "3.141", "3.15"],
+      "answer": 1,
+      "explain": "The .2 precision specifier limits output to 2 decimal places."
+    },
+    {
+      "q": "Choose the correct variable declaration and initialization:",
+      "choices": [
+        "int height; height == 175;",
+        "int height = 175;",
+        "height int = 175;",
+        "int = 175 height;"
+      ],
+      "answer": 1,
+      "explain": "Correct syntax is: datatype variablename = value;"
+    }
+  ]
+}
+</script>
+                        
+                        <!-- Enhanced Quiz Analytics Section -->
+                        <div class="quiz-analytics" id="quiz-analytics" style="display: none;">
+                            <h4>📊 Your Performance Analytics</h4>
+                            <div class="performance-breakdown">
+                                <div class="topic-performance">
+                                    <span class="topic-label">Variable Declaration:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="topic-performance">
+                                    <span class="topic-label">Format Specifiers:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="topic-performance">
+                                    <span class="topic-label">I/O Operations:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="topic-performance">
+                                    <span class="topic-label">Syntax Rules:</span>
+                                    <div class="performance-score">
+                                        <span class="score-value">0%</span>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="improvement-suggestions">
+                                <h5>💡 Areas for Improvement:</h5>
+                                <ul class="suggestions-list">
+                                    <!-- Populated by JavaScript based on performance -->
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="achievement-system-basics">
+                        <h2>🏆 Your Programming Achievements</h2>
+                        
+                        <div class="achievement-system">
+                            <div class="badge-collection">
+                                <div class="badge earned" data-badge="variable-explorer">
+                                    <div class="badge-icon">🔧</div>
+                                    <div class="badge-content">
+                                        <h4>Variable Explorer</h4>
+                                        <p>Mastered C variables and data types</p>
+                                        <div class="badge-date">Earned: Just now!</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge earned" data-badge="io-ninja" id="io-ninja-badge">
+                                    <div class="badge-icon">💻</div>
+                                    <div class="badge-content">
+                                        <h4>I/O Ninja</h4>
+                                        <p>Master of printf and scanf operations</p>
+                                        <div class="badge-points">+50 XP</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge locked" data-badge="quiz-master" id="quiz-master-badge">
+                                    <div class="badge-icon">🎯</div>
+                                    <div class="badge-content">
+                                        <h4>Quiz Master</h4>
+                                        <p>Score 100% on Chapter 2 quiz</p>
+                                        <div class="unlock-hint">Take the quiz above to unlock!</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="badge locked" data-badge="syntax-guru">
+                                    <div class="badge-icon">⚡</div>
+                                    <div class="badge-content">
+                                        <h4>Syntax Guru</h4>
+                                        <p>Perfect understanding of C syntax rules</p>
+                                        <div class="progress-bar"><div class="fill" style="width: 75%"></div></div>
+                                        <small>3/4 topics mastered</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-icon">📚</div>
+                                    <div class="stat-number">2</div>
+                                    <div class="stat-label">Chapters Completed</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">🏆</div>
+                                    <div class="stat-number" id="badge-count">4</div>
+                                    <div class="stat-label">Badges Earned</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">⚡</div>
+                                    <div class="stat-number" id="xp-total">175</div>
+                                    <div class="stat-label">XP Points</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">🎯</div>
+                                    <div class="stat-number" id="avg-score">85%</div>
+                                    <div class="stat-label">Average Quiz Score</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="chapter-summary-basics">
+                        <h2>Chapter Summary</h2>
+                        
+                        <div class="callout callout-tip">
+                            <div class="callout-title">✅ Before you proceed, make sure you can:</div>
+                            <ul>
+                                <li>Declare variables of different data types</li>
+                                <li>Choose appropriate data types for different situations</li>
+                                <li>Use printf() and scanf() for input/output</li>
+                                <li>Apply correct format specifiers (%d, %f, %c, %s)</li>
+                                <li>Follow proper variable naming conventions</li>
+                                <li>Understand the difference between declaration and initialization</li>
+                                <li>Debug common input/output errors</li>
+                            </ul>
+                        </div>
+
+                        <p><strong>Next Step:</strong> Now that you can work with variables and basic I/O, let's learn how to make decisions in your programs with <a href="03-control-flow.html">Chapter 3: Control Flow</a>.</p>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for AL&ML students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/app.js"></script>
+</body>
+</html>

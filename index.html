@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming: Zero to Hero</title>
+    <meta name="description" content="A beginner-friendly, high‑quality C programming course for first-year engineering students." />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="brand">
+                        <div class="logo-icon">📚</div>
+                        <div class="brand-text">
+                            <h1 class="brand-title">C Programming</h1>
+                            <span class="brand-subtitle">Zero to Hero Journey</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="search-container">
+                        <div class="search-icon">🔍</div>
+                        <input type="search" class="search-input" placeholder="Search lessons, concepts, or examples..." aria-label="Search course content">
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="progress-text">Getting Started</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 15%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+                        <span class="menu-icon">☰</span>
+                    </button>
+                    <div class="help-section">
+                        <button class="help-btn" title="Keyboard shortcuts and help" aria-label="Help and shortcuts">
+                            <span class="help-icon">❓</span>
+                            <span class="help-text">Help</span>
+                        </button>
+                        <div class="shortcuts-hint">
+                            <span class="shortcut-item"><kbd>/</kbd> Search</span>
+                            <span class="shortcut-item"><kbd>T</kbd> Toggle Nav</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- CANONICAL SIDEBAR SOURCE -->
+        <nav class="sidebar" aria-label="Course Navigation">
+            <div class="nav-section">
+                <div class="nav-group" data-group="getting-started">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Getting Started
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="/index.html#welcome" class="nav-link">Welcome</a>
+                        <a href="/index.html#getting-ready" class="nav-link">Getting Ready</a>
+                        <a href="/index.html#first-program" class="nav-link">Your First Program</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="core-concepts">
+                    <button class="nav-group-header" aria-expanded="true">
+                        Core Concepts
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="/chapters/01-introduction.html" class="nav-link">Introduction to C</a>
+                        <a href="/chapters/02-basics.html" class="nav-link">Basics & Variables</a>
+                        <a href="/chapters/03-control-flow.html" class="nav-link">Control Flow</a>
+                        <a href="/chapters/04-loops.html" class="nav-link">Loops</a>
+                        <a href="/chapters/05-arrays-strings.html" class="nav-link">Arrays & Strings</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="advanced">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Advanced Topics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="/chapters/06-functions.html" class="nav-link">Functions</a>
+                        <a href="/chapters/07-pointers.html" class="nav-link">Pointers</a>
+                        <a href="/chapters/08-structures.html" class="nav-link">Structures</a>
+                        <a href="/chapters/09-files.html" class="nav-link">File I/O</a>
+                        <a href="/chapters/10-algorithms.html" class="nav-link">Algorithms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="practice">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Practice & Review
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="/practice/basics.html" class="nav-link">Basic Practice</a>
+                        <a href="/practice/control-loops.html" class="nav-link">Control & Loops</a>
+                        <a href="/practice/arrays.html" class="nav-link">Arrays Practice</a>
+                        <a href="/practice/functions.html" class="nav-link">Functions Practice</a>
+                        <a href="/practice/pointers.html" class="nav-link">Pointers Practice</a>
+                        <a href="/practice/structures.html" class="nav-link">Structures Practice</a>
+                        <a href="/practice/files.html" class="nav-link">Files Practice</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-group" data-group="reference">
+                    <button class="nav-group-header" aria-expanded="false">
+                        Quick Reference
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="nav-links">
+                        <a href="/reference/common-errors.html" class="nav-link">Common Errors</a>
+                        <a href="/reference/exam-guide.html" class="nav-link">Exam Guide</a>
+                        <a href="/reference/tools-resources.html" class="nav-link">Tools & Resources</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- END CANONICAL SIDEBAR -->
+
+        <main class="main">
+            <div class="content">
+                <article>
+                    <section id="welcome">
+                        <h1>Welcome to C Programming · Zero ➜ Hero</h1>
+                        <p>A hands-on, beginner-first course designed for first-year engineering students. Learn by reading short concept cards, studying annotated examples, and practicing focused tasks with common‑error guidance.</p>
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Pedagogy</div>
+                            <p>Each lesson follows a 10–15 minute loop: Hook → Concept → Example → Practice → Common Errors → Reflection.</p>
+                        </div>
+                    </section>
+
+                    <section id="getting-ready">
+                        <h2>Getting Ready</h2>
+                        <p>Before writing your first C program, you'll need a development environment. Here are some beginner-friendly options:</p>
+                        <ul>
+                            <li><strong>Code::Blocks:</strong> Free, cross-platform IDE perfect for beginners</li>
+                            <li><strong>Online Compilers:</strong> Replit, OnlineGDB, or Programiz for quick testing</li>
+                            <li><strong>VS Code:</strong> With C/C++ extension for more advanced users</li>
+                        </ul>
+                        <div class="callout callout-info">
+                            <div class="callout-title">🎯 Quick Start</div>
+                            <p>For your first programs, we recommend using an online compiler to focus on learning C syntax rather than setup.</p>
+                        </div>
+                    </section>
+
+                    <section id="first-program">
+                        <h2>Your First C Program</h2>
+                        <p>Every C program starts at <code>main()</code>. Here is the canonical hello world:</p>
+                        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void){
+    printf("Hello, World!\n");
+    return 0; // success
+}
+</code></pre>
+                        <div class="callout callout-tip">
+                            <div class="callout-title">💡 Line‑by‑line</div>
+                            <ul>
+                                <li><code>#include &lt;stdio.h&gt;</code> brings input/output functions.</li>
+                                <li><code>main</code> is the entry point; returns an <code>int</code>.</li>
+                                <li><code>;</code> ends a statement—like a period in English.</li>
+                                <li><code>
+</code> is a newline.</li>
+                            </ul>
+                        </div>
+                         <div class="callout callout-error">
+                            <div class="callout-title">❌ Common errors</div>
+                            <ul>
+                                <li>Missing <code>;</code></li>
+                                <li>Using single quotes for strings (<code>'Hello'</code> ✗)</li>
+                                <li>Case sensitivity (<code>Printf</code> ✗)</li>
+                                <li>Forgetting <code>#include &lt;stdio.h&gt;</code></li>
+                            </ul>
+                        </div>
+                    </section>
+                </article>
+
+                <footer class="footer">
+                    <p>&copy; 2025 C Programming: Zero to Hero. Licensed under MIT for code, content under Creative Commons.</p>
+                    <p>Built with ❤️ for AI&ML students. <a href="https://github.com/anthropics/claude-code">Generated with Claude Code</a></p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>

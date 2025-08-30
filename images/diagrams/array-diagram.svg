@@ -1,0 +1,60 @@
+<svg width="500" height="180" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .array-box { fill: #334155; stroke: #64748b; stroke-width: 2; }
+    .array-text { fill: #f8fafc; font-family: monospace; font-size: 14px; text-anchor: middle; }
+    .index-text { fill: #3b82f6; font-family: monospace; font-size: 12px; text-anchor: middle; }
+    .address-text { fill: #94a3b8; font-family: monospace; font-size: 10px; text-anchor: middle; }
+    .title-text { fill: #3b82f6; font-family: sans-serif; font-size: 16px; font-weight: bold; }
+    .label-text { fill: #f8fafc; font-family: sans-serif; font-size: 12px; }
+  </style>
+  
+  <!-- Title -->
+  <text x="250" y="20" class="title-text" text-anchor="middle">Array: int numbers[5] = {10, 20, 30, 40, 50}</text>
+  
+  <!-- Array elements -->
+  <rect x="50" y="50" width="60" height="40" class="array-box"/>
+  <text x="80" y="73" class="array-text">10</text>
+  
+  <rect x="110" y="50" width="60" height="40" class="array-box"/>
+  <text x="140" y="73" class="array-text">20</text>
+  
+  <rect x="170" y="50" width="60" height="40" class="array-box"/>
+  <text x="200" y="73" class="array-text">30</text>
+  
+  <rect x="230" y="50" width="60" height="40" class="array-box"/>
+  <text x="260" y="73" class="array-text">40</text>
+  
+  <rect x="290" y="50" width="60" height="40" class="array-box"/>
+  <text x="320" y="73" class="array-text">50</text>
+  
+  <!-- Index labels -->
+  <text x="80" y="105" class="index-text">[0]</text>
+  <text x="140" y="105" class="index-text">[1]</text>
+  <text x="200" y="105" class="index-text">[2]</text>
+  <text x="260" y="105" class="index-text">[3]</text>
+  <text x="320" y="105" class="index-text">[4]</text>
+  
+  <!-- Memory addresses -->
+  <text x="80" y="120" class="address-text">0x2000</text>
+  <text x="140" y="120" class="address-text">0x2004</text>
+  <text x="200" y="120" class="address-text">0x2008</text>
+  <text x="260" y="120" class="address-text">0x200C</text>
+  <text x="320" y="120" class="address-text">0x2010</text>
+  
+  <!-- Array name pointer -->
+  <path d="M 20 70 L 45 70" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="15" y="75" class="label-text" text-anchor="end">numbers</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+  
+  <!-- Access example -->
+  <text x="250" y="150" class="title-text" text-anchor="middle">numbers[2] accesses the value 30</text>
+  
+  <!-- Highlight accessed element -->
+  <rect x="170" y="50" width="60" height="40" class="array-box" fill="#10b981" fill-opacity="0.3"/>
+</svg>
